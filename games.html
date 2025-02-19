@@ -158,13 +158,19 @@ Github:https://freddiethepebble.github.io/TypeSpeed-Test`;
                 document.getElementById('popupCreatedDate').innerText = createdDate;
                 document.getElementById('popupLastUpdate').innerText = lastUpdate;
 
-                // Parse the links (like "itch.io:https://...")
-                const linkParts = links.split(',');
-                let linkHTML = '';
-                linkParts.forEach(link => {
-                    const [siteName, url] = link.split(':');
-                    linkHTML += `<a href="${url}" target="_blank">${siteName}</a> `;
-                });
+               // Parse the links (e.g., "itch.io:https://...")
+const linkParts = links.split(',');
+let linkHTML = '';
+linkParts.forEach(link => {
+    const match = link.match(/^(.*?):(https?:\/\/.*)$/);
+    if (match) {
+        const siteName = match[1].trim();
+        const url = match[2].trim();
+        linkHTML += `<a href="${url}" target="_blank">${siteName}</a> `;
+    }
+});
+document.getElementById('popupLinks').innerHTML = linkHTML;
+
 
                 document.getElementById('popupLinks').innerHTML = linkHTML;
 
