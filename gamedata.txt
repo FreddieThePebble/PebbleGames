@@ -1,3 +1,20 @@
+Toast Simulator!
+icons/games/gamecover/toastsim.png
+Simulation,Free,Singleplayer,2D,Web
+Mar 16 2024
+Mar 19, 2024
+itch.io:https://freddiethepebble.itch.io/toastsim
+
+TypeSpeed Test
+icons/games/gamecover/typeseedtest.png
+Casual,Free,Singleplayer,2D,Web
+Jan 3 2025
+Jan 3 2025
+Github:https://freddiethepebble.github.io/TypeSpeed-Test
+
+
+
+
 Format:
 Game Name
 Image URL
