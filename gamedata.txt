@@ -1,12 +1,12 @@
 Toast Simulator!
-icons/games/gamecover/toastsim.png
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/toastsim.png
 Simulation,Free,Singleplayer,2D,Web
 Mar 16 2024
 Mar 19, 2024
 itch.io:https://freddiethepebble.itch.io/toastsim
 
 TypeSpeed Test
-icons/games/gamecover/typeseedtest.png
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/typeseedtest.png
 Casual,Free,Singleplayer,2D,Web
 Jan 3 2025
 Jan 3 2025
