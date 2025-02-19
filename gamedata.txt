@@ -17,6 +17,7 @@ Github:https://freddiethepebble.github.io/TypeSpeed-Test
 
 Format:
 Game Name
+Description
 Image URL
 Tag1,Tag2,Tag3,Tag4
 Game Created
