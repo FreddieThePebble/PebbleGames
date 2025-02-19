@@ -12,6 +12,34 @@ Jan 3 2025
 Jan 3 2025
 Github:https://freddiethepebble.github.io/TypeSpeed-Test
 
+Travel Log
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/travellog.png
+Tool,Free,Singleplayer,2D,Web,PC
+Feb 1 2025
+Feb 2 2025
+Github:https://freddiethepebble.github.io/Travel-Log/
+
+How Old Are U?
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/howoldareu.png
+Casual,Tool,Free,Singleplayer,2D,Web,PC
+Mar 15 2024
+Feb 8 2025
+Github:https://freddiethepebble.github.io/How-Old-Are-U/
+
+On-Hold Simulator
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/onhold-sim.png
+Simulation,Free,Singleplayer,2D,Web,PC
+Feb 9 2025
+Feb 9 2025
+itch.io:https://freddiethepebble.itch.io/onhold-sim
+
+Digits of π
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/digitsofpi.png
+Tool,Free,Singleplayer,2D,Web,PC
+Oct 11 2024
+Oct 11 2024
+GitHub:https://freddiethepebble.github.io/Digits-of-Pi/
+
 
 
 
@@ -25,4 +53,4 @@ Last Update
 Service:URL,Service:URL
 
 Tags:
-Genre,Free,Paid,Singleplayer,Multiplayer,2D,3D,Download,Web,PC,Console,MobileRemastered
+Simulation,Casual,Tool,Free,Paid,Singleplayer,Multiplayer,2D,3D,Download,Web,PC,Console,MobileRemastered
