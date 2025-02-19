@@ -11,19 +11,43 @@
             margin: 20px;
             background-color: #1e1e1f; /* Dark Mode Background */
             color: white; /* Light text color for contrast */
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            padding: 10px;
+            background: #2c2c2c;
+            border-radius: 8px;
+            margin-right: 20px;
+            height: fit-content;
+        }
+        .sidebar h2 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .filter-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .filter-option input {
+            margin-right: 8px;
+        }
+        .content {
+            flex-grow: 1;
         }
         h1 {
-            font-family: 'Luckiest Guy', cursive; /* Apply the Luckiest Guy font */
-            text-align: center; /* Center the title */
-            font-size: 3rem; /* Size of the title */
-            color: #ffffff; /* Title color in dark mode */
-            margin-bottom: 30px; /* Space below the title */
+            font-family: 'Luckiest Guy', cursive;
+            text-align: center;
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 30px;
         }
         .game-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            grid-auto-rows: minmax(250px, auto);
+            gap: 10px;
         }
         .game-card {
             background-color: transparent;
@@ -36,82 +60,22 @@
             width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Subtle shadow on images */
-            transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+            transition: box-shadow 0.3s ease;
         }
         .game-card img:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
-        }
-        /* Popup styles */
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .popup-box {
-            background: #2c2c2c; /* Darker background for the popup */
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: left;
-        }
-        .popup-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-        .popup-box p {
-            font-size: 1rem;
-            margin: 5px 0;
-            color: #cccccc; /* Lighter color for the text */
-        }
-        .popup-box .details a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-        .popup-box .details a:hover {
-            text-decoration: underline;
-        }
-        .popup-close {
-            background-color: #ff3b3b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            float: right;
-        }
-        .popup-close:hover {
-            background-color: #e60000;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
 <body>
-    <h1>Games</h1>
-    <div id="gameData" class="game-container">Loading...</div>
-
-    <!-- Popup Overlay -->
-    <div id="popupOverlay" class="popup-overlay">
-        <div class="popup-box">
-            <button id="closePopup" class="popup-close">Close</button>
-            <h3 id="popupTitle">Game Title</h3>
-            <div id="popupContent">
-                <p><strong>Tags:</strong> <span id="popupTags"></span></p>
-                <p><strong>Game Created:</strong> <span id="popupCreatedDate"></span></p>
-                <p><strong>Last Update:</strong> <span id="popupLastUpdate"></span></p>
-                <p class="details" id="popupLinks"></p>
-            </div>
-        </div>
+    <div class="sidebar">
+        <h2>Filters</h2>
+        <div id="filterContainer"></div>
+    </div>
+    <div class="content">
+        <h1>Games</h1>
+        <div id="gameData" class="game-container">Loading...</div>
     </div>
 
     <script>
@@ -169,64 +133,74 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/i
 Casual,Free,Singleplayer,3D,Web,PC
 Sep 28 2024
 Sep 28 2024
-itch.io:https://adfoc.us/861222105547744`;
+itch.io:https://adfoc.us/861222105547744
 
-        const games = gameDataText.split('\n\n'); // Split by empty line for each game data
+Red
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/red.png
+Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
+Aug 09 2024
+Aug 09 2024
+itch.io:https://freddiethepebble.itch.io/touched
+
+Car Parks on Google Street View
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/CarParksStreetView.png
+Casual,Free,Singleplayer,2D,Web,PC
+Aug 17 2024
+Aug 17 2024
+Github:https://adfoc.us/861222104755478
+
+Tesco on Google Street View
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/TescoStreetView.png
+Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
+Apr 08, 2024
+Apr 13, 2024
+https://freddiethepebble.itch.io/tescoonstreetview`;
+
+        const games = gameDataText.split('\n\n');
         const gameContainer = document.getElementById('gameData');
-        gameContainer.innerHTML = '';
+        const filterContainer = document.getElementById('filterContainer');
+        const allTags = new Set();
 
+        // Extract all tags from game data
         games.forEach(game => {
             const gameDetails = game.split('\n');
-            const title = gameDetails[0];
-            const imageUrl = gameDetails[1];
-            const tags = gameDetails[2];
-            const createdDate = gameDetails[3];
-            const lastUpdate = gameDetails[4];
-            const links = gameDetails[5];
+            const tags = gameDetails[2].split(',');
+            tags.forEach(tag => allTags.add(tag.trim()));
+        });
 
-            const gameCard = document.createElement('div');
-            gameCard.classList.add('game-card');
+        // Create filter checkboxes
+        allTags.forEach(tag => {
+            const filterOption = document.createElement('div');
+            filterOption.classList.add('filter-option');
+            filterOption.innerHTML = `<input type="checkbox" value="${tag}"> <label>${tag}</label>`;
+            filterContainer.appendChild(filterOption);
+        });
 
-            // Only show the image on the main page
-            gameCard.innerHTML = `
-                <img src="${imageUrl}" alt="${title} Cover">
-            `;
+        function updateGameDisplay() {
+            const checkedTags = [...document.querySelectorAll('.filter-option input:checked')].map(input => input.value);
+            gameContainer.innerHTML = '';
 
-            // Event listener to show the popup when the game card is clicked
-            gameCard.addEventListener('click', () => {
-                // Set the content in the popup
-                document.getElementById('popupTitle').innerText = title;
-                document.getElementById('popupTags').innerText = tags;
-                document.getElementById('popupCreatedDate').innerText = createdDate;
-                document.getElementById('popupLastUpdate').innerText = lastUpdate;
+            games.forEach(game => {
+                const gameDetails = game.split('\n');
+                const title = gameDetails[0];
+                const imageUrl = gameDetails[1];
+                const tags = gameDetails[2].split(',').map(tag => tag.trim());
 
-               // Parse the links (e.g., "itch.io:https://...")
-const linkParts = links.split(',');
-let linkHTML = '';
-linkParts.forEach(link => {
-    const match = link.match(/^(.*?):(https?:\/\/.*)$/);
-    if (match) {
-        const siteName = match[1].trim();
-        const url = match[2].trim();
-        linkHTML += `<a href="${url}" target="_blank">${siteName}</a> `;
-    }
-});
-document.getElementById('popupLinks').innerHTML = linkHTML;
-
-
-                document.getElementById('popupLinks').innerHTML = linkHTML;
-
-                // Show the popup
-                document.getElementById('popupOverlay').style.display = 'flex';
+                // Show game if it matches at least one checked tag
+                if (checkedTags.length === 0 || tags.some(tag => checkedTags.includes(tag))) {
+                    const gameCard = document.createElement('div');
+                    gameCard.classList.add('game-card');
+                    gameCard.innerHTML = `<img src="${imageUrl}" alt="${title} Cover">`;
+                    gameContainer.appendChild(gameCard);
+                }
             });
+        }
 
-            gameContainer.appendChild(gameCard);
+        document.querySelectorAll('.filter-option input').forEach(input => {
+            input.addEventListener('change', updateGameDisplay);
         });
 
-        // Close the popup when the close button is clicked
-        document.getElementById('closePopup').addEventListener('click', () => {
-            document.getElementById('popupOverlay').style.display = 'none';
-        });
+        updateGameDisplay(); // Initial display
     </script>
 </body>
 </html>
