@@ -71,9 +71,16 @@ Github:https://adfoc.us/861222104755478
 Tesco on Google Street View
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/TescoStreetView.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
-Apr 08, 2024
-Apr 13, 2024
-https://freddiethepebble.itch.io/tescoonstreetview
+Apr 08 2024
+Apr 13 2024
+itch.io:https://freddiethepebble.itch.io/tescoonstreetview
+
+Porta Potty Manager
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/pottymanager.png
+Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
+May 24 2024
+May 24 2024
+itch.io:https://freddiethepebble.itch.io/pottymanager
 
 
 Format:
