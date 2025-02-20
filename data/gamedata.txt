@@ -1,4 +1,5 @@
 Toast Simulator!
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/toastsim.png
 Simulation,Free,Singleplayer,2D,Web,PC,Ad-Free
 Mar 16 2024
@@ -6,6 +7,7 @@ Mar 19, 2024
 itch.io:https://freddiethepebble.itch.io/toastsim
 
 TypeSpeed Test
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/typeseedtest.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 Jan 3 2025
@@ -13,6 +15,7 @@ Jan 3 2025
 Github:https://freddiethepebble.github.io/TypeSpeed-Test
 
 Travel Log
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/travellog.png
 Tool,Free,Singleplayer,2D,Web,PC,Ad-Free
 Feb 1 2025
@@ -20,6 +23,7 @@ Feb 2 2025
 Github:https://freddiethepebble.github.io/Travel-Log/
 
 How Old Are U?
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/howoldareu.png
 Casual,Tool,Free,Singleplayer,2D,Web,PC,Ad-Free
 Mar 15 2024
@@ -27,6 +31,7 @@ Feb 8 2025
 Github:https://freddiethepebble.github.io/How-Old-Are-U/
 
 On-Hold Simulator
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/onhold-sim.png
 Simulation,Free,Singleplayer,2D,Web,PC,Ad-Free
 Feb 9 2025
@@ -34,6 +39,7 @@ Feb 9 2025
 itch.io:https://freddiethepebble.itch.io/onhold-sim
 
 Digits of π
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/digitsofpi.png
 Tool,Free,Singleplayer,2D,Web,PC,Ad-Free
 Oct 11 2024
@@ -41,6 +47,7 @@ Oct 11 2024
 GitHub:https://freddiethepebble.github.io/Digits-of-Pi/
 
 Balls
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/balls.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 Feb 24 2024
@@ -48,6 +55,7 @@ Feb 24 2024
 itch.io:https://freddiethepebble.itch.io/balls
 
 3D Pineapple
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/pineapple-3d.png
 Casual,Free,Singleplayer,3D,Web,PC
 Sep 28 2024
@@ -55,6 +63,7 @@ Sep 28 2024
 itch.io:https://adfoc.us/861222105547744
 
 Red
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/red.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 Aug 09 2024
@@ -62,6 +71,7 @@ Aug 09 2024
 itch.io:https://freddiethepebble.itch.io/touched
 
 Car Parks on Google Street View
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/CarParksStreetView.png
 Casual,Free,Singleplayer,2D,Web,PC
 Aug 17 2024
@@ -69,6 +79,7 @@ Aug 17 2024
 Github:https://adfoc.us/861222104755478
 
 Tesco on Google Street View
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/TescoStreetView.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 Apr 08 2024
@@ -76,6 +87,7 @@ Apr 13 2024
 itch.io:https://freddiethepebble.itch.io/tescoonstreetview
 
 Porta Potty Manager
+
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/pottymanager.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 May 24 2024
@@ -94,4 +106,11 @@ Last Update
 Service:URL,Service:URL
 
 Tags:
-Free,Paid,Singleplayer,Multiplayer,2D,3D,Download,Web,PC,Console,Mobile,Remastered,Ad-Free
+Simulation,Casual,Tool,
+Free,Paid,
+Singleplayer,Multiplayer,
+2D,3D,
+Download,Web,
+PC,Console,Mobile,
+Remastered,
+Ad-Free
