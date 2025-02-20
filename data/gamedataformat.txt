@@ -1,0 +1,12 @@
+Format:
+Game Name
+Description
+Category (Simulation/Casual/Tool)
+Image URL
+Tag1,Tag2,Tag3,Tag4
+Game Created
+Last Update
+Service:URL,Service:URL
+
+Tags:
+Free,Paid,Singleplayer,Multiplayer,2D,3D,Download,Web,PC,Console,Mobile,Remastered,Ad-Free
