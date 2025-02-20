@@ -8,22 +8,54 @@
     <style>
     body {
         font-family: 'Comfortaa', cursive;
-        margin: 20px;
-        background-color: #1e1e1f; 
+        margin: 0;
+        background-color: #1e1e1f;
         color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 10px; /* Added padding for small screens */
     }
     h1 {
         font-family: 'Luckiest Guy', cursive;
         text-align: center;
         font-size: 3rem;
         color: #ffffff;
-        margin-bottom: 30px;
+        margin: 20px 0;
+        width: 100%;
+    }
+    .main-content {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: space-between;
+        gap: 20px;
+    }
+   .filter-container {
+        width: 100%;
+        max-width: 300px;
+        padding: 20px;
+        background-color: #333;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        position: sticky;
+        top: 0;
+    }
+    .filter-container h3 {
+        color: #ccc;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    .filter-container input[type="checkbox"] {
+        margin-right: 10px;
     }
     .game-container {
         display: grid;
-        grid-template-columns: repeat(4, 1fr); /* 4 equal-width columns */
-        gap: 20px; /* This creates a 20px gap both horizontally and vertically */
-        grid-auto-rows: minmax(20px, 20);
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 20px;
+        flex-grow: 1;
+        padding: 20px;
+        width: 100%;
     }
     .game-card {
         background-color: transparent;
@@ -34,7 +66,7 @@
     }
     .game-card img {
         width: 100%;
-        height: 8;
+        height: auto;
         border-radius: 8px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
         transition: box-shadow 0.3s ease;
@@ -93,19 +125,60 @@
     .popup-close:hover {
         background-color: #e60000;
     }
-</style>
 
+    /* Media Queries */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+        .filter-container {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 2rem;
+        }
+        .filter-container {
+            padding: 10px;
+        }
+        .game-container {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+    }
+    </style>
 </head>
 <body>
     <h1>Games</h1>
-    <div id="gameData" class="game-container">Loading...</div>
+    
+    <!-- Main Content Container (flexbox for layout) -->
+    <div class="main-content">
+        <!-- Filter Section (Checkbox List) -->
+        <div class="filter-container">
+            <h3>Filter by tags</h3>
+            <label><input type="checkbox" value="Simulation"> Simulation</label><br>
+            <label><input type="checkbox" value="Casual"> Casual</label><br>
+            <label><input type="checkbox" value="Tool"> Tool</label><br>
+            <label><input type="checkbox" value="Free"> Free</label><br>
+            <label><input type="checkbox" value="Singleplayer"> Singleplayer</label><br>
+            <label><input type="checkbox" value="2D"> 2D</label><br>
+            <label><input type="checkbox" value="Web"> Web</label><br>
+            <label><input type="checkbox" value="PC"> PC</label><br>
+            <label><input type="checkbox" value="Ad-Free"> Ad-Free</label><br>
+        </div>
+
+        <!-- Games Section (Dynamic Content) -->
+        <div id="gameData" class="game-container">Loading...</div>
+    </div>
 
     <!-- Popup Overlay -->
     <div id="popupOverlay" class="popup-overlay">
         <div class="popup-box">
             <button id="closePopup" class="popup-close">Close</button>
             <h3 id="popupTitle">Game Title</h3>
-            <p id="popupDescription">Description goes here...</p> <!-- Description added here -->
+            <p id="popupDescription">Description goes here...</p>
             <div id="popupContent">
                 <p><strong>Tags:</strong> <span id="popupTags"></span></p>
                 <p><strong>Game Created:</strong> <span id="popupCreatedDate"></span></p>
@@ -214,60 +287,55 @@ itch.io:https://freddiethepebble.itch.io/pottymanager`;
 
         const games = gameDataText.split('\n\n'); // Split by empty line for each game data
         const gameContainer = document.getElementById('gameData');
-        gameContainer.innerHTML = '';
+        const filterContainer = document.querySelector('.filter-container');
 
-        games.forEach(game => {
-            const gameDetails = game.split('\n');
-            const title = gameDetails[0];
-            const description = gameDetails[1]; // Get the description
-            const imageUrl = gameDetails[2];
-            const tags = gameDetails[3];
-            const createdDate = gameDetails[4];
-            const lastUpdate = gameDetails[5];
-            const links = gameDetails[6];
+        const filterGames = () => {
+            const selectedTags = Array.from(filterContainer.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(checkbox => checkbox.value);
+            gameContainer.innerHTML = ''; // Clear current game list
 
-            const gameCard = document.createElement('div');
-            gameCard.classList.add('game-card');
+            games.forEach(game => {
+                const gameDetails = game.split('\n');
+                const title = gameDetails[0];
+                const description = gameDetails[1];
+                const imageUrl = gameDetails[2];
+                const tags = gameDetails[3].split(',');
+                const createdDate = gameDetails[4];
+                const lastUpdate = gameDetails[5];
+                const links = gameDetails[6];
 
-            // Only show the image on the main page
-            gameCard.innerHTML = `
-                <img src="${imageUrl}" alt="${title} Cover">
-            `;
+                if (selectedTags.every(tag => tags.includes(tag))) {
+                    const gameCard = document.createElement('div');
+                    gameCard.classList.add('game-card');
 
-            // Event listener to show the popup when the game card is clicked
-            gameCard.addEventListener('click', () => {
-                // Set the content in the popup
-                document.getElementById('popupTitle').innerText = title;
-                document.getElementById('popupDescription').innerText = description; // Set the description
-                document.getElementById('popupTags').innerText = tags;
-                document.getElementById('popupCreatedDate').innerText = createdDate;
-                document.getElementById('popupLastUpdate').innerText = lastUpdate;
+                    gameCard.innerHTML = `
+                        <img src="${imageUrl}" alt="${title}">
+                    `;
 
-                // Parse the links (e.g., "itch.io:https://...")
-                const linkParts = links.split(',');
-                let linkHTML = '';
-                linkParts.forEach(link => {
-                    const match = link.match(/^(.*?):(https?:\/\/.*)$/);
-                    if (match) {
-                        const siteName = match[1].trim();
-                        const url = match[2].trim();
-                        linkHTML += `<a href="${url}" target="_blank">${siteName}</a> `;
-                    }
-                });
-                document.getElementById('popupLinks').innerHTML = linkHTML;
+                    gameCard.addEventListener('click', () => {
+                        document.getElementById('popupTitle').textContent = title;
+                        document.getElementById('popupDescription').textContent = description;
+                        document.getElementById('popupTags').textContent = tags.join(', ');
+                        document.getElementById('popupCreatedDate').textContent = createdDate;
+                        document.getElementById('popupLastUpdate').textContent = lastUpdate;
+                        document.getElementById('popupLinks').innerHTML = `<a href="${links}" target="_blank">Play Here</a>`;
+                        document.getElementById('popupOverlay').style.display = 'flex';
+                    });
 
-                // Show the popup
-                document.getElementById('popupOverlay').style.display = 'flex';
+                    gameContainer.appendChild(gameCard);
+                }
             });
+        };
 
-            gameContainer.appendChild(gameCard);
-        });
+        // Load games and add event listeners for filtering
+        filterGames();
 
-        // Close the popup when the close button is clicked
+        filterContainer.addEventListener('change', filterGames);
+
+        // Popup close functionality
         document.getElementById('closePopup').addEventListener('click', () => {
             document.getElementById('popupOverlay').style.display = 'none';
         });
     </script>
 </body>
 </html>
-
