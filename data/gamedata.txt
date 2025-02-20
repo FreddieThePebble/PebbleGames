@@ -1,5 +1,5 @@
 Toast Simulator!
-
+Simu
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/toastsim.png
 Simulation,Free,Singleplayer,2D,Web,PC,Ad-Free
 Mar 16 2024
@@ -7,7 +7,7 @@ Mar 19, 2024
 itch.io:https://freddiethepebble.itch.io/toastsim
 
 TypeSpeed Test
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/typeseedtest.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 Jan 3 2025
@@ -15,7 +15,7 @@ Jan 3 2025
 Github:https://freddiethepebble.github.io/TypeSpeed-Test
 
 Travel Log
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/travellog.png
 Tool,Free,Singleplayer,2D,Web,PC,Ad-Free
 Feb 1 2025
@@ -23,7 +23,7 @@ Feb 2 2025
 Github:https://freddiethepebble.github.io/Travel-Log/
 
 How Old Are U?
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/howoldareu.png
 Casual,Tool,Free,Singleplayer,2D,Web,PC,Ad-Free
 Mar 15 2024
@@ -31,7 +31,7 @@ Feb 8 2025
 Github:https://freddiethepebble.github.io/How-Old-Are-U/
 
 On-Hold Simulator
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/onhold-sim.png
 Simulation,Free,Singleplayer,2D,Web,PC,Ad-Free
 Feb 9 2025
@@ -39,7 +39,7 @@ Feb 9 2025
 itch.io:https://freddiethepebble.itch.io/onhold-sim
 
 Digits of π
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/digitsofpi.png
 Tool,Free,Singleplayer,2D,Web,PC,Ad-Free
 Oct 11 2024
@@ -47,7 +47,7 @@ Oct 11 2024
 GitHub:https://freddiethepebble.github.io/Digits-of-Pi/
 
 Balls
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/balls.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 Feb 24 2024
@@ -55,7 +55,7 @@ Feb 24 2024
 itch.io:https://freddiethepebble.itch.io/balls
 
 3D Pineapple
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/pineapple-3d.png
 Casual,Free,Singleplayer,3D,Web,PC
 Sep 28 2024
@@ -63,7 +63,7 @@ Sep 28 2024
 itch.io:https://adfoc.us/861222105547744
 
 Red
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/red.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 Aug 09 2024
@@ -71,7 +71,7 @@ Aug 09 2024
 itch.io:https://freddiethepebble.itch.io/touched
 
 Car Parks on Google Street View
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/CarParksStreetView.png
 Casual,Free,Singleplayer,2D,Web,PC
 Aug 17 2024
@@ -79,7 +79,7 @@ Aug 17 2024
 Github:https://adfoc.us/861222104755478
 
 Tesco on Google Street View
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/TescoStreetView.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 Apr 08 2024
@@ -87,12 +87,45 @@ Apr 13 2024
 itch.io:https://freddiethepebble.itch.io/tescoonstreetview
 
 Porta Potty Manager
-
+Description goes here
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/pottymanager.png
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 May 24 2024
 May 24 2024
 itch.io:https://freddiethepebble.itch.io/pottymanager
+
+A Karens Coming
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/karenscoming.png
+Horror,Free,Singleplayer,3D,Download,PC,Ad-Free
+27 December 2024
+18 January 2025
+itch.io:https://freddiethepebble.itch.io/karens-coming
+
+Phone Simulator
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/phonesim.png
+Simulation,Free,Singleplayer,2D,Web,PC,Ad-Free
+Apr 23 2024
+Apr 23 2024
+itch.io:https://freddiethepebble.itch.io/phonesim
+
+Keyboard Simulator
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/phonesim.png
+Simulation,Paid,Singleplayer,2D,Download,PC,Ad-Free
+Apr 07 2024
+Jun 05 2024
+itch.io:https://freddiethepebble.itch.io/keyboardsim
+
+Mouse Simulator
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/phonesim.png
+Simulation,Free,Singleplayer,2D,Web,PC,Ad-Free
+Jun 05 2024
+Feb 20 2025
+itch.io:https://freddiethepebble.itch.io/mousesim
+
 
 
 Format:
@@ -105,7 +138,7 @@ Last Update
 Service:URL,Service:URL
 
 Tags:
-Simulation,Casual,Tool,
+Simulation,Casual,Tool,Horror
 Free,Paid,
 Singleplayer,Multiplayer,
 2D,3D,
