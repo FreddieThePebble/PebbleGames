@@ -6,95 +6,95 @@
     <title>Game Data</title>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Comfortaa:wght@300&display=swap" rel="stylesheet"> <!-- Google Fonts -->
     <style>
-        body {
-            font-family: 'Comfortaa', cursive; /* Comfortaa Light for the rest of the site */
-            margin: 20px;
-            background-color: #1e1e1f; /* Dark Mode Background */
-            color: white; /* Light text color for contrast */
-        }
-        h1 {
-            font-family: 'Luckiest Guy', cursive; /* Apply the Luckiest Guy font */
-            text-align: center; /* Center the title */
-            font-size: 3rem; /* Size of the title */
-            color: #ffffff; /* Title color in dark mode */
-            margin-bottom: 30px; /* Space below the title */
-        }
-        .game-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            grid-auto-rows: minmax(250px, auto);
-        }
-        .game-card {
-            background-color: transparent;
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        .game-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Subtle shadow on images */
-            transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
-        }
-        .game-card img:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7); /* Stronger shadow on hover */
-        }
-        /* Popup styles */
-        .popup-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .popup-box {
-            background: #2c2c2c; /* Darker background for the popup */
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: left;
-        }
-        .popup-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: #ffffff;
-        }
-        .popup-box p {
-            font-size: 1rem;
-            margin: 5px 0;
-            color: #cccccc; /* Lighter color for the text */
-        }
-        .popup-box .details a {
-            text-decoration: none;
-            color: #007BFF;
-        }
-        .popup-box .details a:hover {
-            text-decoration: underline;
-        }
-        .popup-close {
-            background-color: #ff3b3b;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1rem;
-            border-radius: 5px;
-            cursor: pointer;
-            float: right;
-        }
-        .popup-close:hover {
-            background-color: #e60000;
-        }
-    </style>
+    body {
+        font-family: 'Comfortaa', cursive;
+        margin: 20px;
+        background-color: #1e1e1f; 
+        color: white;
+    }
+    h1 {
+        font-family: 'Luckiest Guy', cursive;
+        text-align: center;
+        font-size: 3rem;
+        color: #ffffff;
+        margin-bottom: 30px;
+    }
+    .game-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 equal-width columns */
+        gap: 20px; /* This creates a 20px gap both horizontally and vertically */
+        grid-auto-rows: minmax(20px, 20);
+    }
+    .game-card {
+        background-color: transparent;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.3s;
+    }
+    .game-card img {
+        width: 100%;
+        height: 8;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+        transition: box-shadow 0.3s ease;
+    }
+    .game-card img:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+    }
+    .popup-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    .popup-box {
+        background: #2c2c2c;
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: left;
+    }
+    .popup-box h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        color: #ffffff;
+    }
+    .popup-box p {
+        font-size: 1rem;
+        margin: 5px 0;
+        color: #cccccc;
+    }
+    .popup-box .details a {
+        text-decoration: none;
+        color: #007BFF;
+    }
+    .popup-box .details a:hover {
+        text-decoration: underline;
+    }
+    .popup-close {
+        background-color: #ff3b3b;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        float: right;
+    }
+    .popup-close:hover {
+        background-color: #e60000;
+    }
+</style>
+
 </head>
 <body>
     <h1>Games</h1>
@@ -105,6 +105,7 @@
         <div class="popup-box">
             <button id="closePopup" class="popup-close">Close</button>
             <h3 id="popupTitle">Game Title</h3>
+            <p id="popupDescription">Description goes here...</p> <!-- Description added here -->
             <div id="popupContent">
                 <p><strong>Tags:</strong> <span id="popupTags"></span></p>
                 <p><strong>Game Created:</strong> <span id="popupCreatedDate"></span></p>
@@ -209,29 +210,7 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/i
 Casual,Free,Singleplayer,2D,Web,PC,Ad-Free
 May 24 2024
 May 24 2024
-itch.io:https://freddiethepebble.itch.io/pottymanager
-
-
-Format:
-Game Name
-Description
-Category (Simulation/Casual/Tool)
-Image URL
-Tag1,Tag2,Tag3,Tag4
-Game Created
-Last Update
-Service:URL,Service:URL
-
-Tags:
-Simulation,Casual,Tool,
-Free,Paid,
-Singleplayer,Multiplayer,
-2D,3D,
-Download,Web,
-PC,Console,Mobile,
-Remastered,
-Ad-Free
-`;
+itch.io:https://freddiethepebble.itch.io/pottymanager`;
 
         const games = gameDataText.split('\n\n'); // Split by empty line for each game data
         const gameContainer = document.getElementById('gameData');
@@ -240,11 +219,12 @@ Ad-Free
         games.forEach(game => {
             const gameDetails = game.split('\n');
             const title = gameDetails[0];
-            const imageUrl = gameDetails[1];
-            const tags = gameDetails[2];
-            const createdDate = gameDetails[3];
-            const lastUpdate = gameDetails[4];
-            const links = gameDetails[5];
+            const description = gameDetails[1]; // Get the description
+            const imageUrl = gameDetails[2];
+            const tags = gameDetails[3];
+            const createdDate = gameDetails[4];
+            const lastUpdate = gameDetails[5];
+            const links = gameDetails[6];
 
             const gameCard = document.createElement('div');
             gameCard.classList.add('game-card');
@@ -258,24 +238,22 @@ Ad-Free
             gameCard.addEventListener('click', () => {
                 // Set the content in the popup
                 document.getElementById('popupTitle').innerText = title;
+                document.getElementById('popupDescription').innerText = description; // Set the description
                 document.getElementById('popupTags').innerText = tags;
                 document.getElementById('popupCreatedDate').innerText = createdDate;
                 document.getElementById('popupLastUpdate').innerText = lastUpdate;
 
-               // Parse the links (e.g., "itch.io:https://...")
-const linkParts = links.split(',');
-let linkHTML = '';
-linkParts.forEach(link => {
-    const match = link.match(/^(.*?):(https?:\/\/.*)$/);
-    if (match) {
-        const siteName = match[1].trim();
-        const url = match[2].trim();
-        linkHTML += `<a href="${url}" target="_blank">${siteName}</a> `;
-    }
-});
-document.getElementById('popupLinks').innerHTML = linkHTML;
-
-
+                // Parse the links (e.g., "itch.io:https://...")
+                const linkParts = links.split(',');
+                let linkHTML = '';
+                linkParts.forEach(link => {
+                    const match = link.match(/^(.*?):(https?:\/\/.*)$/);
+                    if (match) {
+                        const siteName = match[1].trim();
+                        const url = match[2].trim();
+                        linkHTML += `<a href="${url}" target="_blank">${siteName}</a> `;
+                    }
+                });
                 document.getElementById('popupLinks').innerHTML = linkHTML;
 
                 // Show the popup
@@ -292,3 +270,4 @@ document.getElementById('popupLinks').innerHTML = linkHTML;
     </script>
 </body>
 </html>
+
