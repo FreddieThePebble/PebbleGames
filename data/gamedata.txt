@@ -98,7 +98,6 @@ itch.io:https://freddiethepebble.itch.io/pottymanager
 Format:
 Game Name
 Description
-Category (Simulation/Casual/Tool)
 Image URL
 Tag1,Tag2,Tag3,Tag4
 Game Created
