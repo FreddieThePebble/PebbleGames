@@ -143,6 +143,6 @@ Free,Paid,
 Singleplayer,Multiplayer,
 2D,3D,
 Download,Web,
-PC,Console,Mobile,
+Computer,Console,Mobile,
 Remastered,
 Ad-Free
