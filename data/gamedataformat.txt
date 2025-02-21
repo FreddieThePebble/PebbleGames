@@ -13,7 +13,7 @@ Service:URL,Service:URL
 
 Tags:
 
-Simulation,Casual,Tool,Horror
+Simulation,Casual,Tool,Horror,Puzzle/Strategy,Platoformer,Music,Survival,VisualNovel,NSFW,Racing,Cards,Simple
 Free,Paid,
 Singleplayer,Multiplayer,
 2D,3D,
