@@ -60,7 +60,7 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/i
 Casual,Free,Singleplayer,3D,Web,PC
 Sep 28 2024
 Sep 28 2024
-itch.io:https://adfoc.us/861222105547744
+itch.io:https://freddiethepebble.itch.io/pineapple-3d
 
 Red
 Description goes here
@@ -76,7 +76,7 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/i
 Casual,Free,Singleplayer,2D,Web,PC
 Aug 17 2024
 Aug 17 2024
-Github:https://adfoc.us/861222104755478
+Github:https://freddiethepebble.github.io/StreetView-CarParks/
 
 Tesco on Google Street View
 Description goes here
@@ -181,3 +181,44 @@ Casual,Paid,Singleplayer,2D,Web,PC
 Jul 25 2023
 Feb 20 2025
 itch.io:https://freddiethepebble.itch.io/e
+
+Burnt Toast Recipie
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/BurntToast.png
+Casual,Free,Singleplayer,2D,Web,PC
+Apr 3 2024
+Apr 3 2024
+Github:https://freddiethepebble.github.io/Burnt-Toast-Recipie/
+
+Where is my Cursor?
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/whereiscursor.png
+Casual,Free,Singleplayer,2D,Web,PC
+Jan 16 2024
+Feb 21 2025
+itch.io:https://freddiethepebble.itch.io/whereiscursor
+
+Keyboard Drums Kit
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/keyboardrums.png
+Casual,Free,Singleplayer,2D,Web,PC
+Apr 08 2024
+Feb 21 2025
+itch.io:https://freddiethepebble.itch.io/keyboardrums
+
+Flip
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/flip.png
+Casual,Free,Singleplayer,2D,Web,PC
+Aug 21 2023
+Feb 21 2025
+itch.io:https://freddiethepebble.itch.io/line
+
+Flip 2
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/flip2.png
+Casual,Free,Singleplayer,2D,Web,PC
+May 19 2024
+May 19 2024
+itch.io:https://freddiethepebble.itch.io/flip
+
