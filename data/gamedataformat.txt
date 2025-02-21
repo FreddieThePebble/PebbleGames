@@ -3,11 +3,13 @@ Format:
 Game Name
 GameID
 Description
+Genure
 Cover Image URL
 Icon Image URL
 Tag1, Tag2, Tag3, Tag4
 Game Created
 Last Update
+Platforms
 Service:URL, Service:URL
 
 
