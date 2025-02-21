@@ -222,3 +222,19 @@ May 19 2024
 May 19 2024
 itch.io:https://freddiethepebble.itch.io/flip
 
+Taco Doger
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/tacodoge.png
+Casual,Free,Singleplayer,2D,Web,PC
+Apr 21 2024
+Apr 21 2024
+itch.io:https://freddiethepebble.itch.io/tacodoge
+
+Convert to Fruit
+Description goes here
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/games/gamecover/convert2fruit.png
+Casual,Free,Singleplayer,2D,Web,PC
+Jan 02 2024
+Feb 21 2025
+itch.io:https://freddiethepebble.itch.io/convert2fruit
+
