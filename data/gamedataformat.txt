@@ -12,12 +12,16 @@ Last Update
 Platforms
 Service:URL, Service:URL
 
+Genure
+
+Simulation,Casual,Tool,Test,Puzzle,Platoformer,Survival,VisualNovel,NSFW,Racing
+
 
 
 
 Tags:
 
-Simulation,Casual,Tool,Horror,Puzzle/Strategy,Platoformer,Music,Survival,VisualNovel,NSFW,Racing,Cards,Simple
+Horror,Puzzle,Strategy,Music,Cards,Simple
 Free,Paid,
 Singleplayer,Multiplayer,
 2D,3D,
