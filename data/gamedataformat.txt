@@ -1,12 +1,14 @@
 Format:
 
 Game Name
+GameID
 Description
-Image URL
-Tag1,Tag2,Tag3,Tag4
+Cover Image URL
+Icon Image URL
+Tag1, Tag2, Tag3, Tag4
 Game Created
 Last Update
-Service:URL,Service:URL
+Service:URL, Service:URL
 
 
 
