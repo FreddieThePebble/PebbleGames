@@ -55,7 +55,7 @@
     <script>
         async function loadImages() {
             try {
-                const response = await fetch("https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/data/games-list.csv");
+                const response = await fetch("https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/data/games.csv");
                 const data = await response.text();
                 let rows = data.split("\n").slice(1); // Skip header if present
 
@@ -79,9 +79,6 @@
                     const img = document.createElement("img");
                     img.src = game.imageUrl;
                     img.alt = "Game Image"; // Could add a more descriptive alt if available
-                    img.onclick = () => {
-                        window.open(`https://freddiethepebble.github.io/PebbleGames/g?id=${game.gameId}`, "_blank");
-                    };
                     container.appendChild(img);
                 });
             } catch (error) {
