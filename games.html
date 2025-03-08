@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games</title>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Comfortaa&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/Games.png" type="image/png">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comfortaa', sans-serif;
             background-color: #1e1e1f;
             color: white;
             text-align: center;
@@ -22,7 +22,7 @@
         }
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Thumbnails bigger, 1-5 in a row */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 15px;
             padding: 20px;
             max-width: 1200px;
@@ -43,6 +43,69 @@
             font-size: 1.5rem;
             color: white;
         }
+
+        /* Popup styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow: auto;
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #1e1e1f;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            color: white;
+            font-size: 1.2rem;
+            text-align: left;
+            border-radius: 8px;
+            font-family: 'Comfortaa', sans-serif;
+        }
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 15px;
+            top: 5px;
+        }
+        .close:hover,
+        .close:focus {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal h2 {
+            font-family: 'Luckiest Guy', cursive;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            cursor: help;
+        }
+        .modal ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+        .modal ul li {
+            font-size: 1rem;
+            margin: 5px 0;
+            cursor: help;
+        }
+        .extra-info {
+            font-size: 1rem;
+            font-style: italic;
+            margin-top: 10px;
+            color: #ccc;
+            font-family: 'Comfortaa', sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -50,6 +113,16 @@
     <h1>Games</h1>
     <div class="container" id="imageGrid">
         <p class="loading">Loading games...</p>
+    </div>
+
+    <!-- The Modal -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h2 id="gameTitle" title="Game Name"></h2>
+            <ul id="gameDetails"></ul>
+            <p id="extraInfo" class="extra-info"></p>
+        </div>
     </div>
 
     <script>
@@ -64,7 +137,12 @@
                         const columns = row.split(",");
                         return {
                             imageUrl: columns[0]?.trim(),
-                            gameId: columns[1]?.trim()
+                            gameId: columns[1]?.trim(),
+                            title: columns[2]?.trim(), // Column 3 is the title
+                            bullet1: columns[3]?.trim(), // Column 4
+                            bullet2: columns[4]?.trim(), // Column 5
+                            bullet3: columns[5]?.trim(), // Column 6
+                            extra: columns[6]?.trim() // Column 7
                         };
                     })
                     .filter(game => game.imageUrl.startsWith("http") && game.gameId); // Ensure valid entries
@@ -78,7 +156,8 @@
                 games.forEach(game => {
                     const img = document.createElement("img");
                     img.src = game.imageUrl;
-                    img.alt = "Game Image"; // Could add a more descriptive alt if available
+                    img.alt = game.title || "Game Image";
+                    img.onclick = () => openModal(game);
                     container.appendChild(img);
                 });
             } catch (error) {
@@ -87,6 +166,41 @@
                 console.error("Error loading games:", error);
             }
         }
+
+        function openModal(game) {
+            const modal = document.getElementById("gameModal");
+            const gameTitle = document.getElementById("gameTitle");
+            const gameDetails = document.getElementById("gameDetails");
+            const extraInfo = document.getElementById("extraInfo");
+
+            // Set title
+            gameTitle.textContent = game.title;
+            gameTitle.title = "Game Name";
+
+            // Set bullet points
+            gameDetails.innerHTML = "";
+            if (game.bullet1) gameDetails.innerHTML += `<li title="Description">${game.bullet1}</li>`;
+            if (game.bullet2) gameDetails.innerHTML += `<li title="Game Created">${game.bullet2}</li>`;
+            if (game.bullet3) gameDetails.innerHTML += `<li title="Last Update">${game.bullet3}</li>`;
+
+            // Set extra info (Column 7)
+            extraInfo.textContent = game.extra ? game.extra : "";
+
+            modal.style.display = "block";
+        }
+
+        // Close the modal
+        document.getElementById("closeModal").onclick = function() {
+            document.getElementById("gameModal").style.display = "none";
+        };
+
+        // Close the modal if the user clicks anywhere outside of the modal
+        window.onclick = function(event) {
+            const modal = document.getElementById("gameModal");
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
 
         loadImages();
     </script>
