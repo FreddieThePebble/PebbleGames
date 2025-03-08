@@ -62,12 +62,14 @@
             margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 90%;
+            max-width: 800px;
             color: white;
             font-size: 1.2rem;
             text-align: left;
             border-radius: 8px;
             font-family: 'Comfortaa', sans-serif;
+            box-sizing: border-box;
         }
         .close {
             color: #aaa;
@@ -87,7 +89,6 @@
             font-family: 'Luckiest Guy', cursive;
             font-size: 2rem;
             margin-bottom: 10px;
-            cursor: help;
         }
         .modal ul {
             list-style-type: disc;
@@ -97,8 +98,29 @@
         .modal ul li {
             font-size: 1rem;
             margin: 5px 0;
-            cursor: help;
+            position: relative;
+            cursor: pointer;
         }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: absolute;
+            top: -25px;
+            left: 105%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .modal ul li:hover .tooltip {
+            opacity: 1;
+        }
+
         .extra-info {
             font-size: 1rem;
             font-style: italic;
@@ -119,9 +141,10 @@
     <div id="gameModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeModal">&times;</span>
-            <h2 id="gameTitle" title="Game Name"></h2>
+            <h2 id="gameTitle"></h2>
+            <p id="gameDescription"></p>
+            <ul id="gameUrls"></ul>
             <ul id="gameDetails"></ul>
-            <p id="extraInfo" class="extra-info"></p>
         </div>
     </div>
 
@@ -136,13 +159,13 @@
                     .map(row => {
                         const columns = row.split(",");
                         return {
-                            imageUrl: columns[0]?.trim(),
-                            gameId: columns[1]?.trim(),
-                            title: columns[2]?.trim(), // Column 3 is the title
-                            bullet1: columns[3]?.trim(), // Column 4
-                            bullet2: columns[4]?.trim(), // Column 5
-                            bullet3: columns[5]?.trim(), // Column 6
-                            extra: columns[6]?.trim() // Column 7
+                            imageUrl: columns[0]?.trim(),  // Column 1: Thumbnail
+                            gameId: columns[1]?.trim(),    // Column 2: GameID
+                            title: columns[2]?.trim(),     // Column 3: Game Name
+                            description: columns[3]?.trim(), // Column 4: Description
+                            jsonString: columns[4]?.trim(), // Column 5: JSON String
+                            gameCreated: columns[6]?.trim(), // Column 7: Game Created
+                            lastUpdate: columns[7]?.trim(), // Column 8: Last Update
                         };
                     })
                     .filter(game => game.imageUrl.startsWith("http") && game.gameId); // Ensure valid entries
@@ -170,21 +193,39 @@
         function openModal(game) {
             const modal = document.getElementById("gameModal");
             const gameTitle = document.getElementById("gameTitle");
+            const gameDescription = document.getElementById("gameDescription");
+            const gameUrls = document.getElementById("gameUrls");
             const gameDetails = document.getElementById("gameDetails");
-            const extraInfo = document.getElementById("extraInfo");
 
             // Set title
             gameTitle.textContent = game.title;
-            gameTitle.title = "Game Name";
 
-            // Set bullet points
+            // Set description
+            gameDescription.textContent = game.description || "No description available.";
+
+            // Set URLs (Column 5 as list of links)
+            gameUrls.innerHTML = "";
+            if (game.jsonString) {
+                const urls = game.jsonString.split(","); // Assuming it's a comma-separated list of URLs
+                urls.forEach(url => {
+                    const li = document.createElement("li");
+                    const a = document.createElement("a");
+                    a.href = url.trim();
+                    a.target = "_blank";
+                    a.textContent = url.trim();
+                    li.appendChild(a);
+                    gameUrls.appendChild(li);
+                });
+            }
+
+            // Set bullet points for Game Created and Last Update
             gameDetails.innerHTML = "";
-            if (game.bullet1) gameDetails.innerHTML += `<li title="Description">${game.bullet1}</li>`;
-            if (game.bullet2) gameDetails.innerHTML += `<li title="Game Created">${game.bullet2}</li>`;
-            if (game.bullet3) gameDetails.innerHTML += `<li title="Last Update">${game.bullet3}</li>`;
-
-            // Set extra info (Column 7)
-            extraInfo.textContent = game.extra ? game.extra : "";
+            if (game.gameCreated) {
+                gameDetails.innerHTML += `<li>Game Created: ${game.gameCreated}</li>`;
+            }
+            if (game.lastUpdate) {
+                gameDetails.innerHTML += `<li>Last Update: ${game.lastUpdate}</li>`;
+            }
 
             modal.style.display = "block";
         }
