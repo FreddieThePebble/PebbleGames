@@ -163,7 +163,7 @@
                             gameId: columns[1]?.trim(),    // Column 2: GameID
                             title: columns[2]?.trim(),     // Column 3: Game Name
                             description: columns[3]?.trim(), // Column 4: Description
-                            jsonString: columns[4]?.trim(), // Column 5: JSON String
+                            urlString: columns[4]?.trim(), // Column 5: URLs (separated by '&')
                             gameCreated: columns[6]?.trim(), // Column 7: Game Created
                             lastUpdate: columns[7]?.trim(), // Column 8: Last Update
                         };
@@ -200,13 +200,23 @@
             // Set title
             gameTitle.textContent = game.title;
 
-            // Set description
-            gameDescription.textContent = game.description || "No description available.";
+            // Set description (handling multiple descriptions)
+            gameDescription.innerHTML = "";
+            if (game.description) {
+                const descriptions = game.description.split(",");  // Split by commas
+                descriptions.forEach(desc => {
+                    const li = document.createElement("li");
+                    li.textContent = desc.trim(); // Trim any extra whitespace
+                    gameDescription.appendChild(li);
+                });
+            } else {
+                gameDescription.textContent = "No description available.";
+            }
 
-            // Set URLs (Column 5 as list of links)
+            // Set URLs (Column 5 as list of links, split by '&')
             gameUrls.innerHTML = "";
-            if (game.jsonString) {
-                const urls = game.jsonString.split(","); // Assuming it's a comma-separated list of URLs
+            if (game.urlString) {
+                const urls = game.urlString.split("&"); // Split by '&' to handle multiple URLs
                 urls.forEach(url => {
                     const li = document.createElement("li");
                     const a = document.createElement("a");
