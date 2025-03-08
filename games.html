@@ -19,7 +19,59 @@
             font-family: 'Luckiest Guy', cursive;
             font-size: 3rem;
             margin-bottom: 20px;
+            color: #ba0aed; /* Subtle accent color for title */
         }
+        /* Header style */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .header img {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+        }
+        .game-counter {
+            font-size: 1rem;
+            color: #0c8bce; /* Subtle accent color for game counter */
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 5px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #575757;
+        }
+
         .container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -89,6 +141,7 @@
             font-family: 'Luckiest Guy', cursive;
             font-size: 2rem;
             margin-bottom: 10px;
+            color: #ba0aed; /* Accent color for title */
         }
         .modal ul {
             list-style-type: disc;
@@ -132,6 +185,23 @@
 </head>
 <body>
 
+    <!-- Header -->
+    <div class="header">
+        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui-icons/home.png" alt="Home Icon" onclick="window.location.href='https://freddiethepebble.github.io/PebbleGames'">
+        <div class="game-counter" id="gameCounter">Loading games...</div>
+        <!-- Filter by Dropdown -->
+        <div class="dropdown">
+            <button class="dropbtn">Filter by</button>
+            <div class="dropdown-content">
+                <a href="#" onclick="filterGames('random')">Random</a>
+                <a href="#" onclick="filterGames('lastUpdate')">Last Update</a>
+                <a href="#" onclick="filterGames('dateCreatedOldest')">Date Created (Oldest)</a>
+                <a href="#" onclick="filterGames('dateCreatedNew')">Date Created (New)</a>
+                <a href="#" onclick="filterGames('alphabetical')">Alphabetical Order</a>
+            </div>
+        </div>
+    </div>
+
     <h1>Games</h1>
     <div class="container" id="imageGrid">
         <p class="loading">Loading games...</p>
@@ -149,13 +219,15 @@
     </div>
 
     <script>
+        let games = [];
+
         async function loadImages() {
             try {
                 const response = await fetch("https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/data/games.csv");
                 const data = await response.text();
                 let rows = data.split("\n").slice(1); // Skip header if present
 
-                let games = rows
+                games = rows
                     .map(row => {
                         const columns = row.split(",");
                         return {
@@ -170,19 +242,15 @@
                     })
                     .filter(game => game.imageUrl.startsWith("http") && game.gameId); // Ensure valid entries
 
-                // Shuffle the games randomly
-                games.sort(() => Math.random() - 0.5);
+                // Update game counter
+                const gameCounter = document.getElementById("gameCounter");
+                gameCounter.textContent = `${games.length} Games`;
 
                 const container = document.getElementById("imageGrid");
                 container.innerHTML = ""; // Clear loading message
 
-                games.forEach(game => {
-                    const img = document.createElement("img");
-                    img.src = game.imageUrl;
-                    img.alt = game.title || "Game Image";
-                    img.onclick = () => openModal(game);
-                    container.appendChild(img);
-                });
+                // Default to random order when loading
+                filterGames('random');
             } catch (error) {
                 const container = document.getElementById("imageGrid");
                 container.innerHTML = "<p>Failed to load games. Please try again later.</p>";
@@ -190,69 +258,87 @@
             }
         }
 
-        function openModal(game) {
+        function displayGames(games) {
+            const container = document.getElementById("imageGrid");
+            container.innerHTML = ""; // Clear any existing images
+
+            games.forEach(game => {
+                const img = document.createElement("img");
+                img.src = game.imageUrl;
+                img.alt = game.title || "Game Image";
+                img.onclick = () => openGameModal(game);
+                container.appendChild(img);
+            });
+        }
+
+        function openGameModal(game) {
             const modal = document.getElementById("gameModal");
             const gameTitle = document.getElementById("gameTitle");
             const gameDescription = document.getElementById("gameDescription");
             const gameUrls = document.getElementById("gameUrls");
             const gameDetails = document.getElementById("gameDetails");
 
-            // Set title
+            // Set title and description
             gameTitle.textContent = game.title;
+            gameDescription.textContent = game.description;
 
-            // Set description (handling multiple descriptions)
-            gameDescription.innerHTML = "";
-            if (game.description) {
-                const descriptions = game.description.split(",");  // Split by commas
-                descriptions.forEach(desc => {
-                    const li = document.createElement("li");
-                    li.textContent = desc.trim(); // Trim any extra whitespace
-                    gameDescription.appendChild(li);
-                });
-            } else {
-                gameDescription.textContent = "No description available.";
-            }
-
-            // Set URLs (Column 5 as list of links, split by '&')
+            // Clear previous URLs and game details
             gameUrls.innerHTML = "";
+            gameDetails.innerHTML = "";
+
+            // Add URLs (split by '&')
             if (game.urlString) {
-                const urls = game.urlString.split("&"); // Split by '&' to handle multiple URLs
+                const urls = game.urlString.split("&");
                 urls.forEach(url => {
                     const li = document.createElement("li");
                     const a = document.createElement("a");
-                    a.href = url.trim();
+                    a.href = url;
+                    a.textContent = url;
                     a.target = "_blank";
-                    a.textContent = url.trim();
                     li.appendChild(a);
                     gameUrls.appendChild(li);
                 });
             }
 
-            // Set bullet points for Game Created and Last Update
-            gameDetails.innerHTML = "";
-            if (game.gameCreated) {
-                gameDetails.innerHTML += `<li>Game Created: ${game.gameCreated}</li>`;
-            }
-            if (game.lastUpdate) {
-                gameDetails.innerHTML += `<li>Last Update: ${game.lastUpdate}</li>`;
-            }
+            // Add game created and last update info
+            gameDetails.innerHTML += `<li>Game Created: ${game.gameCreated}</li>`;
+            gameDetails.innerHTML += `<li>Last Update: ${game.lastUpdate}</li>`;
 
             modal.style.display = "block";
         }
 
-        // Close the modal
         document.getElementById("closeModal").onclick = function() {
-            document.getElementById("gameModal").style.display = "none";
-        };
-
-        // Close the modal if the user clicks anywhere outside of the modal
-        window.onclick = function(event) {
             const modal = document.getElementById("gameModal");
-            if (event.target === modal) {
-                modal.style.display = "none";
-            }
-        };
+            modal.style.display = "none";
+        }
 
+        function filterGames(order) {
+            let filteredGames = [...games];
+
+            switch (order) {
+                case 'random':
+                    filteredGames = filteredGames.sort(() => Math.random() - 0.5);
+                    break;
+                case 'lastUpdate':
+                    filteredGames = filteredGames.sort((a, b) => new Date(b.lastUpdate) - new Date(a.lastUpdate));
+                    break;
+                case 'dateCreatedOldest':
+                    filteredGames = filteredGames.sort((a, b) => new Date(a.gameCreated) - new Date(b.gameCreated));
+                    break;
+                case 'dateCreatedNew':
+                    filteredGames = filteredGames.sort((a, b) => new Date(b.gameCreated) - new Date(a.gameCreated));
+                    break;
+                case 'alphabetical':
+                    filteredGames = filteredGames.sort((a, b) => a.title.localeCompare(b.title));
+                    break;
+                default:
+                    break;
+            }
+
+            displayGames(filteredGames);
+        }
+
+        // Initial load
         loadImages();
     </script>
 
