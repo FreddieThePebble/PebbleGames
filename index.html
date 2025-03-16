@@ -66,16 +66,16 @@
             opacity: 1;
         }
         .description {
-    margin: 20px auto;
-    padding: 8px;
-    font-size: 1.4em;
-    color: white;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    width: 88%;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-}
+            margin: 20px auto;
+            padding: 8px;
+            font-size: 1.2em;
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            width: 88%;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
         .footer {
             margin-top: auto;
             background-color: #222;
@@ -106,27 +106,41 @@
             opacity: 0.8;
         }
         .contact-list {
-    list-style-type: disc;
-    padding-left: 200px;
-    text-align: left;
-}
+            list-style-type: disc;
+            padding-left: 200px;
+            text-align: left;
+        }
 
-.contact-list li {
-    font-size: 1.2em;
-    margin-bottom: 5px;
-}
+        .contact-list li {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
 
-.contact-list a {
-    color: #0c8bce;
-    text-decoration: none;
-    font-weight: bold;
-}
+        .contact-list a {
+            color: #0c8bce;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-.contact-list a:hover {
-    text-decoration: underline;
-}
+        .contact-list a:hover {
+            text-decoration: underline;
+        }
 
+        .share-section {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
 
+        .share-link {
+            color: #0c8bce;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .share-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -146,16 +160,19 @@
     </div>
 
     <div class="description">
-        <p>Ive been coding stuff in Scratch from about 12 but now im older, ive created more advancesd software so i created this website to show it all off</p>
+        <p>I've been coding stuff in Scratch from about 12, but now I'm older. I've created more advanced software and I created this website to show it all off (Inspired by neal.fun).</p>
     </div>
     <p>This Website was created by FreddieThePebble, Contact FreddieThePebble:</p>
-<ul class="contact-list">
-    <li>Email: <a href="mailto:contact4mysanity@gmail.com">contact4mysanity@gmail.com</a></li>
-    <li>Message on <a href="https://www.reddit.com/user/FreddieThePebble/" target="_blank" rel="noopener noreferrer">Reddit</a></li>
-</ul>
+    <ul class="contact-list">
+        <li>Email: <a href="mailto:contact4mysanity@gmail.com">contact4mysanity@gmail.com</a></li>
+        <li>Message on <a href="https://www.reddit.com/user/FreddieThePebble/" target="_blank" rel="noopener noreferrer">Reddit</a></li>
+    </ul>
 
-
-
+    <!-- Share Section -->
+    <div class="share-section">
+        <p>Share this website:</p>
+        <a href="#" class="share-link" onclick="copyToClipboard()">freddiethepebble.github.io/PebbleGames</a>
+    </div>
 
     <footer class="footer">
         <p>This website was made with <a href="https://github.com/FreddieThePebble/PebbleGames/tree/main" target="_blank" rel="noopener noreferrer">GitHub Pages</a></p>
@@ -170,5 +187,17 @@
         </div>
     </footer>
 
+    <script>
+        function copyToClipboard() {
+            const textToCopy = "https://freddiethepebble.github.io/PebbleGames";
+            const textarea = document.createElement("textarea");
+            textarea.value = textToCopy;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+            alert("URL copied to clipboard!");
+        }
+    </script>
 </body>
 </html>
