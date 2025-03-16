@@ -1,10 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Page</title>
-    <!-- Google Fonts Import -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
     <style>
         body {
@@ -55,7 +53,6 @@
             width: 100%;
             max-width: 1200px;
         }
-        /* Sales Box */
         .sales-box {
             width: 20%;
             background-color: #2a2a2a;
@@ -74,7 +71,6 @@
             color: #e4e4e4;
             margin: 10px 0 0 0;
         }
-        /* Poster and Title */
         .poster-container {
             display: flex;
             justify-content: center;
@@ -109,7 +105,6 @@
             opacity: 1;
             filter: brightness(1.2);
         }
-        /* Hover Text */
         .platform-icon[data-platform="Windows"]:hover::after {
             content: "Windows";
             position: absolute;
@@ -202,15 +197,21 @@
             display: inline-block;
         }
         .platform-links a {
-    background: none; /* Remove the background */
+    background: none;
     color: #f0f0f0;
-    padding: 0; /* Remove padding */
+    padding: 0;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
     margin: 5px;
     display: inline-block;
+    transition: transform 0.3s ease;
 }
+
+.platform-links a:hover {
+    transform: scale(1.1);
+}
+
 
         .table-container {
             width: 80%;
@@ -235,7 +236,6 @@
         tr:hover {
             background-color: #3a3a3a;
         }
-        /* Date Created Box */
         .date-box {
             width: 100%;
             background-color: #2a2a2a;
@@ -263,7 +263,6 @@
 
     <div class="container">
         <div class="header-content">
-            <!-- Sales Box -->
             <div class="sales-box">
                 <h2>PebbleGame Sales</h2>
                 <p>February Sale - 28% Off</p>
@@ -272,7 +271,6 @@
                 <p>Christmas Sale - December - 40% Off</p>
             </div>
             
-            <!-- Poster and Title -->
             <div class="poster-container">
                 <img class="poster" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Poster%20Placeholder.png" alt="Game Poster">
                 <div class="description">
@@ -305,34 +303,63 @@
             </div>
         </div>
 
-        <!-- Screenshots -->
         <div class="screenshots">
             <img class="screenshot" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 1" onclick="openScreenshot('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png')">
             <img class="screenshot" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 2" onclick="openScreenshot('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png')">
             <img class="screenshot" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 3" onclick="openScreenshot('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png')">
         </div>
 
-        <!-- Table -->
         <div class="table-container">
             <table>
                 <thead>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Gameplay</td>
-                        <td>Fun and engaging mechanics.</td>
+                        <td>Genre</td>
+                        <td>Adventure</td>
                     </tr>
                     <tr>
                         <td>Difficulty</td>
-                        <td>Challenging yet rewarding.</td>
+                        <td>Easy/Medium/Hard/Rage</td>
                     </tr>
                     <tr>
-                        <td>Graphics</td>
-                        <td>Stunning visuals and animations.</td>
+                        <td>Dimension</td>
+                        <td>2D or 3D</td>
                     </tr>
                     <tr>
-                        <td>Sound</td>
-                        <td>Immersive and atmospheric soundtrack.</td>
+                        <td>Game Engine</td>
+                        <td>Godot</td>
+                    </tr>
+                    <tr>
+                        <td>PLaters</td>
+                        <td>Singleplayer</td>
+                    </tr>
+                    <tr>
+                        <td>Language</td>
+                        <td>English</td>
+                    </tr>
+                    <tr>
+                        <td>State</td>
+                        <td>Published/Prototype</td>
+                        </tr>
+                    <tr>
+                        <td>Cost</td>
+                        <td>Free/Paid</td>
+                    <tr>
+                        <td>Platforms</td>
+                        <td>Online, Windows, Mac</td>
+                    <tr>
+                        <td>Hardware</td>
+                        <td>PC, Mobile, Console</td>
+                    <tr>
+                        <td>Host</td>
+                        <td>Steam, itch.io</td>
+                    <tr>
+                        <td>Controlls</td>
+                        <td>PC, Mouse</td>
+                    <tr>
+                        <td>Internet</td>
+                        <td>Reqired/Not Needed/Reccomended</td>
                     </tr>
                 </tbody>
             </table>
