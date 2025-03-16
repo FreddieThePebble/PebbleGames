@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PebbleGames</title>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Comfortaa&display=swap" rel="stylesheet">
     <link rel="icon" href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/Pebble.png" type="image/png">
     <style>
         body {
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Comfortaa', sans-serif;
             text-align: center;
             background-color: #333333;
             color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         h1 {
             margin-top: 20px;
@@ -27,23 +30,20 @@
         }
         .icon-container a {
             display: inline-block;
-        }
-        .icon-container img {
-            width: 200px;  /* Fixed size for icons */
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .icon-container img:hover {
-            transform: scale(1.1);  /* Slight zoom effect on hover */
-        }
-        .icon-container a:hover img {
-            opacity: 0.8;  /* Slight fade effect on hover */
-        }
-        .icon-container a {
             position: relative;
         }
-        .icon-container a::after {
+        .icon-container img {
+            width: 200px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .icon-container img:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+        .icon-container a::after,
+        .footer-icons a::after {
             content: attr(data-tooltip);
             position: absolute;
             bottom: 100%;
@@ -57,21 +57,47 @@
             opacity: 0;
             transition: opacity 0.3s ease;
             font-size: 1.1em;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);  /* Shadow effect on tooltip text */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
         }
-        .icon-container a:hover::after {
+        .icon-container a:hover::after,
+        .footer-icons a:hover::after {
             visibility: visible;
             opacity: 1;
         }
-        @media (max-width: 768px) {
-            .icon-container img {
-                width: 150px;  /* Adjust size for smaller screens */
-            }
+        .description {
+            margin-top: 40px;
+            font-size: 1.2em;
+            color: #cccccc;
         }
-        @media (max-width: 480px) {
-            .icon-container img {
-                width: 120px;  /* Further adjust for very small screens */
-            }
+        .footer {
+            margin-top: auto;
+            background-color: #222;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            color: #cccccc;
+            font-size: 1.2em;
+        }
+        .footer-icons {
+            display: flex;
+            gap: 20px;
+        }
+        .footer-icons a {
+            display: inline-block;
+            position: relative;
+        }
+        .footer-icons img {
+            width: 80px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .footer-icons img:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
         }
     </style>
 </head>
@@ -80,16 +106,35 @@
     <h1>PebbleGames</h1>
     
     <div class="icon-container">
-        <a href="https://freddiethepebble.github.io/PebbleGames/games" data-tooltip="Games">
+        <a href="https://freddiethepebble.github.io/PebbleGames/games" target="_blank" rel="noopener noreferrer" data-tooltip="Games">
             <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/icons/Games.png" alt="Games Icon">
         </a>
-        <a href="https://freddiethepebble.github.io/PebbleGames/mods" data-tooltip="Mods, Extensions and Plugins">
+        <a href="https://freddiethepebble.github.io/PebbleGames/mods" target="_blank" rel="noopener noreferrer" data-tooltip="Mods, Extensions and Plugins">
             <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/icons/Mods.png" alt="Mods Icon">
         </a>
-        <a href="https://freddiethepebble.github.io/PebbleGames/assets" data-tooltip="Assets">
+        <a href="https://freddiethepebble.github.io/PebbleGames/assets" target="_blank" rel="noopener noreferrer" data-tooltip="Assets">
             <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/icons/Assets.png" alt="Assets Icon">
         </a>
     </div>
+
+    <div class="description">
+        <p>Ive been coding stuff in Scratch from about 12 but now im older, ive created more advancesd software so i created this website to show it all off</p>
+    </div>
+    
+    <p>Contact: contact4mysanity@gmail.com and https://www.reddit.com/user/FreddieThePebble/</p>
+
+    <footer class="footer">
+        <p>This website was made with <a href="https://github.com/FreddieThePebble/PebbleGames/tree/main" target="_blank" rel="noopener noreferrer">GitHub Pages</a></p>
+        <span>Donate:</span>
+        <div class="footer-icons">
+            <a href="https://www.buymeacoffee.com" target="_blank" rel="noopener noreferrer" data-tooltip="Buy Me a Coffee">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/donate/BuyMeCoffee.png" alt="BuyMeCoffee Icon">
+            </a>
+            <a href="https://www.paypal.com" target="_blank" rel="noopener noreferrer" data-tooltip="PayPal">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/donate/Paypal.png" alt="Paypal Icon">
+            </a>
+        </div>
+    </footer>
 
 </body>
 </html>
