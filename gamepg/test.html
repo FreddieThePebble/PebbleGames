@@ -60,62 +60,38 @@
         max-width: 1200px;
     }
 
-    .sales-box {
-        width: 36%;
-        background-color: #2a2a2a;
-        padding: 10px;
-        border-radius: 8px;
-        margin-right: 20px;
-        border: 2px solid #c93030;
-    }
-
-    .sales-box h2 {
-        font-family: 'Comfortaa', sans-serif;
-        font-size: 20px;
-        margin: 0;
-        color: #f0f0f0;
-    }
-
-    .sales-box p {
-        font-size: 16px;
-        color: #e4e4e4;
-        margin: 10px 0 0 0;
-    }
-    
-    .similar-games-box {
+    .links-box {
     width: 36%;
     background-color: #2a2a2a;
     padding: 10px;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-right: 20px;
     border: 2px solid #c93030;
 }
 
-.similar-games-box h2 {
+.links-box h2 {
     font-family: 'Comfortaa', sans-serif;
     font-size: 20px;
     margin: 0;
     color: #f0f0f0;
 }
 
-.similar-games-box ul {
-    list-style-type: none;
-    padding: 0;
+.links-box p {
+    font-size: 16px;
+    color: #e4e4e4;
+    margin: 10px 0 0 0;
 }
 
-.similar-games-box li {
-    margin: 10px 0;
+.links-box a {
+    color: #e4e4e4;  /* Keeps text white */
+    font-style: italic;  /* Makes text italic */
+    text-decoration: none; /* Removes underline */
 }
 
-.similar-games-box a {
-    color: #0c8bce;
-    text-decoration: none;
-    transition: color 0.3s ease;
+.links-box a:hover {
+    text-decoration: underline; /* Optional: adds underline on hover */
 }
 
-.similar-games-box a:hover {
-    color: #ba0aed;
-}
 
 
     .poster-container {
@@ -349,12 +325,12 @@ tr:hover {
         <div class="header-content">
             <div class="container">
         <div class="header-content">
-            <div class="sales-box">
-                <h2>PebbleGame Sales</h2>
-                <p>February Sale - 28% Off</p>
-                <p>Summer Sale - August - 24% Off</p>
-                <p>Halloween Sale - October - 20% Off</p>
-                <p>Christmas Sale - December - 40% Off</p>
+            <div class="links-box">
+                <h2>Related Links</h2>
+                <p><a href="february-sale.html">February Sale - 28% Off</a></p>
+                <p><a href="summer-sale.html">Summer Sale - August - 24% Off</a></p>
+                <p><a href="halloween-sale.html">Halloween Sale - October - 20% Off</a></p>
+                <p><a href="christmas-sale.html">Christmas Sale - December - 40% Off</a></p>
             </div>
             
             <div class="poster-container">
@@ -391,25 +367,12 @@ tr:hover {
         </div>
         
         <div class="content-container">
-    <!-- Pebble Sales Box -->
     <div class="pebble-sales-box">
-        <!-- Your Pebble Sales content here -->
     </div>
 
-    <!-- Similar Games Box -->
-    <div class="similar-games-box">
-        <h2>Similar Games</h2>
-        <ul>
-            <li><a href="link-to-similar-game-1.html">Similar Game 1</a></li>
-            <li><a href="link-to-similar-game-2.html">Similar Game 2</a></li>
-            <li><a href="link-to-similar-game-3.html">Similar Game 3</a></li>
-            <li><a href="link-to-similar-game-4.html">Similar Game 4</a></li>
-        </ul>
-    </div>
 
     <!-- Poster -->
     <div class="poster">
-        <!-- Your Poster content here -->
     </div>
 </div>
 
