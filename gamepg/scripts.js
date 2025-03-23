@@ -8,6 +8,11 @@ function openScreenshot(url) {
     window.open(url, '_blank');
 }
 
-if (window.innerWidth <= 768) {
-    document.getElementById("mobile-popup").style.display = "block";
-  }
+// Wait for the page to fully load before checking for screen size
+window.onload = function() {
+    if (window.innerWidth <= 768) {
+      // Only show the popup if it's a mobile screen size
+      document.getElementById("mobile-popup").style.display = "block";
+    }
+  };
+  
