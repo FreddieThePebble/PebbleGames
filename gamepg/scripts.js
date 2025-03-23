@@ -7,3 +7,7 @@ function copyToClipboard() {
 function openScreenshot(url) {
     window.open(url, '_blank');
 }
+
+if (window.innerWidth <= 768) {
+    document.getElementById("mobile-popup").style.display = "block";
+  }
