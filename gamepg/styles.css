@@ -210,6 +210,7 @@ transform: scale(1.1);
 
 .yt-trailer iframe {
     width: 70%;
+    border: 2px solid #c93030;
 }
 
 .right-box {
@@ -301,3 +302,26 @@ border-bottom: 1px solid #c93030;
     font-size: 20px;
     margin: 0;
 }
+
+#mobile-popup {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    width: 80%;
+  }
+
+  /* Popup for mobile devices only */
+  @media (max-width: 768px) {
+    #mobile-popup {
+      display: block;
+    }
+  }
