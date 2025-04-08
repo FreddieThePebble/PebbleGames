@@ -11,7 +11,6 @@ fetch(csvUrl)
       return { thumb, url, date };
     });
 
-    // Sort by date (newest first)
     entries.sort((a, b) => b.date - a.date);
 
     const gallery = document.getElementById("gallery");
@@ -25,7 +24,6 @@ fetch(csvUrl)
       gallery.appendChild(img);
     });
 
-    // Update game count
     gameCount.textContent = entries.length;
   })
   .catch(error => {
