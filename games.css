@@ -54,8 +54,13 @@
     height: 100%;
     object-fit: contain;
     cursor: pointer;
+    transition: transform 0.2s ease, rotate 0.2s ease;
   }
-
+  
+  .home-icon img:hover {
+    transform: scale(1.2) rotate(10deg);
+  }
+  
   .game-count {
     position: absolute;
     top: 15px;
