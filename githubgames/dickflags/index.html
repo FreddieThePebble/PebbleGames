@@ -90,7 +90,7 @@
 
     <script>
         async function loadFlags() {
-            const response = await fetch("https://raw.githubusercontent.com/FreddieThePebble/FlagsWithDicks/refs/heads/main/data.txt");
+            const response = await fetch("https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/githubgames/dickflags/data.txt");
             const text = await response.text();
             const lines = text.trim().split("\n");
             const table = document.querySelector("table");
