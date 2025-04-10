@@ -1,6 +1,6 @@
 Andorra
-https://raw.githubusercontent.com/FreddieThePebble/FlagsWithDicks/refs/heads/main/flags/regular/Andorra.png
-https://raw.githubusercontent.com/FreddieThePebble/FlagsWithDicks/refs/heads/main/flags/dicks/Andorra.png
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/githubgames/dickflags/flags/regular/Andorra.png
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/githubgames/dickflags/flags/dicks/Andorra.png
 Barbados
 https://raw.githubusercontent.com/FreddieThePebble/FlagsWithDicks/refs/heads/main/flags/regular/Barbados.png
 https://raw.githubusercontent.com/FreddieThePebble/FlagsWithDicks/refs/heads/main/flags/dicks/Barbados.png
