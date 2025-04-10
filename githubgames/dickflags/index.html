@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penis Flags</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 90%;
+            min-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #1e1e1e;
+            color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 0px 15px rgba(76, 175, 80, 0.3);
+            table-layout: fixed;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 15px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        th {
+            background-color: #4CAF50;
+            color: black;
+            font-size: 18px;
+        }
+        img {
+            width: 200px;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid #4CAF50;
+            transition: transform 0.2s;
+        }
+        img:hover {
+            transform: scale(1.05);
+        }
+        .button-container {
+            margin-top: 10px;
+        }
+        .button-container a img {
+            width: 32px;
+            height: 32px;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #1e1e1e;
+            color: #bbb;
+            font-size: 14px;
+            text-align: center;
+            border-top: 2px solid #4CAF50;
+        }
+        .icons {
+            margin-top: 10px;
+        }
+        .icons img {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            opacity: 0.6;
+        }
+        .icons img:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flags With Dicks</h1>
+    <table>
+        <tr>
+            <th>Country</th>
+            <th>Original Flag</th>
+            <th>Redesigned Flag</th>
+        </tr>
+    </table>
+
+    <script>
+        async function loadFlags() {
+            const response = await fetch("https://raw.githubusercontent.com/FreddieThePebble/FlagsWithDicks/refs/heads/main/data.txt");
+            const text = await response.text();
+            const lines = text.trim().split("\n");
+            const table = document.querySelector("table");
+
+            for (let i = 0; i < lines.length; i += 3) {
+                let country = lines[i];
+                let originalFlag = lines[i + 1];
+                let redesignedFlag = lines[i + 2];
+
+                let row = document.createElement("tr");
+
+                row.innerHTML = `
+                    <td><strong>${country}</strong></td>
+                    <td>
+                        <img src="${originalFlag}" alt="Original Flag">
+                        <div class="button-container">
+                            <a href="${originalFlag}" target="_blank">
+                                <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui-icons/open-newtab.png" alt="Enlarge">
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <img src="${redesignedFlag}" alt="Redesigned Flag">
+                        <div class="button-container">
+                            <a href="${redesignedFlag}" target="_blank">
+                                <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui-icons/open-newtab.png" alt="Enlarge">
+                            </a>
+                        </div>
+                    </td>
+                `;
+
+                table.appendChild(row);
+            }
+        }
+
+        loadFlags();
+    </script>
+
+    <footer>
+        <p>This was intended as a joke and a bit of fun, plz don't take offence</p>
+        <div class="icons">
+            <img src="https://via.placeholder.com/40" alt="Placeholder Icon">
+            <img src="https://via.placeholder.com/40" alt="Placeholder Icon">
+            <img src="https://via.placeholder.com/40" alt="Placeholder Icon">
+            <img src="https://via.placeholder.com/40" alt="Placeholder Icon">
+            <img src="https://via.placeholder.com/40" alt="Placeholder Icon">
+        </div>
+    </footer>
+
+</body>
+</html>
