@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ways 2 Say Your Name</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            width: 80%;
+            max-width: 400px;
+            margin-top: 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+
+        .output, .sign-language, .hieroglyphs, .a1z26, .atbash, .caesar, .bacon {
+            margin-top: 20px;
+            font-size: 18px; /* Reduced font size */
+            color: #555;
+            visibility: hidden;
+        }
+
+        .output:not(:first-of-type) {
+            margin-top: 20px; /* Space between sections */
+        }
+
+        .sign-language img, .hieroglyphs img {
+            width: 40px; /* Set the size of the images to look like emojis */
+            height: 40px;
+            margin: 5px;
+            vertical-align: middle; /* Align images vertically with text */
+            margin-top: 16px; /* Adjust margin to push images up by 4px */
+        }
+
+        .sign-language, .hieroglyphs, .a1z26, .atbash, .caesar, .bacon {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+            visibility: hidden;
+        }
+
+        .a1z26, .atbash, .caesar, .bacon {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ways 2 Say Your Name</h1>
+    <input type="text" id="textInput" placeholder="Type your name here">
+    <div class="output" id="morseOutput">Morse Code: </div>
+    <div class="output" id="binaryOutput">Binary Code: </div>
+    <div class="output" id="brailleOutput">Braille Code: </div>
+    <div class="output" id="base64Output">Base64: </div>
+    <div class="sign-language" id="signLanguageOutput">Sign Language: </div>
+    <div class="hieroglyphs" id="hieroglyphsOutput">Hieroglyphs: </div>
+    <div class="a1z26" id="a1z26Output">A1Z26: </div>
+    <div class="atbash" id="atbashOutput">Atbash: </div>
+    <div class="caesar" id="caesarOutput">Caesar Cipher: </div>
+    <div class="bacon" id="baconOutput">Francis Bacon's Cipher: </div>
+
+    <script>
+        // Morse code dictionary
+        const morseCode = {
+            'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.', 'G': '--.',
+            'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.',
+            'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-',
+            'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--', 'Z': '--..',
+            '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
+            '6': '-....', '7': '--...', '8': '---..', '9': '----.', '0': '-----',
+            ' ': '   '
+        };
+
+        // Braille code dictionary
+        const brailleCode = {
+            'A': '⠁', 'B': '⠃', 'C': '⠉', 'D': '⠙', 'E': '⠑', 'F': '⠋', 'G': '⠛',
+            'H': '⠓', 'I': '⠊', 'J': '⠚', 'K': '⠅', 'L': '⠇', 'M': '⠍', 'N': '⠝',
+            'O': '⠕', 'P': '⠏', 'Q': '⠟', 'R': '⠗', 'S': '⠎', 'T': '⠞', 'U': '⠥',
+            'V': '⠧', 'W': '⠺', 'X': '⠭', 'Y': '⠽', 'Z': '⠵',
+            '1': '⠁', '2': '⠃', '3': '⠉', '4': '⠙', '5': '⠑',
+            '6': '⠋', '7': '⠛', '8': '⠓', '9': '⠊', '0': '⠚',
+            ' ': '   '
+        };
+
+        // Sign language images dictionary
+        const signLanguageImages = {
+            'A': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/A.png',
+            'B': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/B.png',
+            'C': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/C.png',
+            'D': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/D.png',
+            'E': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/E.png',
+            'F': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/F.png',
+            'G': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/G.png',
+            'H': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/H.png',
+            'I': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/I.png',
+            'J': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/J.png',
+            'K': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/K.png',
+            'L': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/L.png',
+            'M': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/M.png',
+            'N': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/N.png',
+            'O': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/O.png',
+            'P': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/P.png',
+            'Q': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/Q.png',
+            'R': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/R.png',
+            'S': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/S.png',
+            'T': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/T.png',
+            'U': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/U.png',
+            'V': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/V.png',
+            'W': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/W.png',
+            'X': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/X.png',
+            'Y': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/Y.png',
+            'Z': 'https://raw.githubusercontent.com/FreddieThePebble/Ways-2-Say-Your-Name/main/Sign%20Language%20Letters/Z.png'
+        };
+
+        // Hieroglyphs dictionary
+        const hieroglyphsCode = {
+            'A': '𓀀', 'B': '𓀁', 'C': '𓀂', 'D': '𓀃', 'E': '𓀄', 'F': '𓀅', 'G': '𓀆',
+            'H': '𓀇', 'I': '𓀈', 'J': '𓀉', 'K': '𓀊', 'L': '𓀋', 'M': '𓀌', 'N': '𓀍',
+            'O': '𓀎', 'P': '𓀏', 'Q': '𓀐', 'R': '𓀑', 'S': '𓀒', 'T': '𓀓', 'U': '𓀔',
+            'V': '𓀕', 'W': '𓀖', 'X': '𓀗', 'Y': '𓀘', 'Z': '𓀙',
+            '1': '𓀟', '2': '𓀠', '3': '𓀡', '4': '𓀢', '5': '𓀣',
+            '6': '𓀤', '7': '𓀥', '8': '𓀦', '9': '𓀧', '0': '𓀨',
+            ' ': '   '
+        };
+
+        // Caesar Cipher function (shift of 3)
+        function convertToCaesar(text, shift = 3) {
+            return text.toUpperCase().split('').map(function(letter) {
+                if (letter >= 'A' && letter <= 'Z') {
+                    return String.fromCharCode(((letter.charCodeAt(0) - 65 + shift) % 26) + 65);
+                } else {
+                    return letter;
+                }
+            }).join('');
+        }
+
+        // Francis Bacon's Cipher function
+        function convertToBacon(text) {
+            const baconCipher = {
+                'A': 'aaaaa', 'B': 'aaaab', 'C': 'aaaba', 'D': 'aaabb', 'E': 'aabaa', 'F': 'aabab',
+                'G': 'aabba', 'H': 'aabbb', 'I': 'abaaa', 'J': 'abaab', 'K': 'ababa', 'L': 'ababb',
+                'M': 'abbaa', 'N': 'abbab', 'O': 'abbba', 'P': 'abbbb', 'Q': 'baaaa', 'R': 'baaab',
+                'S': 'baaba', 'T': 'baabb', 'U': 'babaa', 'V': 'babab', 'W': 'babba', 'X': 'babbb',
+                'Y': 'bbaaa', 'Z': 'bbaab', ' ': '     '
+            };
+            return text.toUpperCase().split('').map(function(letter) {
+                return baconCipher[letter] || '';
+            }).join(' ');
+        }
+
+        // Convert text to Morse code with spaces between letters
+        function convertToMorse(text) {
+            return text.toUpperCase().split('').map(function(letter) {
+                return morseCode[letter] || '';
+            }).join(' ');
+        }
+
+        // Convert text to Binary code with spaces between letters
+        function convertToBinary(text) {
+            return text.split('').map(function(letter) {
+                return letter.charCodeAt(0).toString(2).padStart(8, '0');
+            }).join(' ');
+        }
+
+        // Convert text to Braille code with spaces between letters
+        function convertToBraille(text) {
+            return text.toUpperCase().split('').map(function(letter) {
+                return brailleCode[letter] || '';
+            }).join(' ');
+        }
+
+        // Convert text to Base64
+        function convertToBase64(text) {
+            return btoa(text);
+        }
+
+        // Convert text to Sign Language images
+        function convertToSignLanguage(text) {
+            return text.toUpperCase().split('').map(function(letter) {
+                const imgSrc = signLanguageImages[letter];
+                return imgSrc ? `<img src="${imgSrc}" alt="${letter}">` : '';
+            }).join('');
+        }
+
+        // Convert text to Hieroglyphs
+        function convertToHieroglyphs(text) {
+            return text.toUpperCase().split('').map(function(letter) {
+                return hieroglyphsCode[letter] || '';
+            }).join(' ');
+        }
+
+        // Convert text to A1Z26
+        function convertToA1Z26(text) {
+            return text.toUpperCase().split('').map(function(letter) {
+                return letter.match(/[A-Z]/) ? (letter.charCodeAt(0) - 64) : letter;
+            }).join(' ');
+        }
+
+        // Convert text to Atbash
+        function convertToAtbash(text) {
+            const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const reversedAlphabet = alphabet.split('').reverse().join('');
+            return text.toUpperCase().split('').map(function(letter) {
+                const index = alphabet.indexOf(letter);
+                return index !== -1 ? reversedAlphabet[index] : letter;
+            }).join('');
+        }
+
+        // Handle input event
+        document.getElementById('textInput').addEventListener('input', function() {
+            const inputText = this.value.trim();
+            const morseText = convertToMorse(inputText);
+            const binaryText = convertToBinary(inputText);
+            const brailleText = convertToBraille(inputText);
+            const base64Text = convertToBase64(inputText);
+            const signLanguageText = convertToSignLanguage(inputText);
+            const hieroglyphsText = convertToHieroglyphs(inputText);
+            const a1z26Text = convertToA1Z26(inputText);
+            const atbashText = convertToAtbash(inputText);
+            const caesarText = convertToCaesar(inputText);
+            const baconText = convertToBacon(inputText);
+            
+            const morseOutputDiv = document.getElementById('morseOutput');
+            const binaryOutputDiv = document.getElementById('binaryOutput');
+            const brailleOutputDiv = document.getElementById('brailleOutput');
+            const base64OutputDiv = document.getElementById('base64Output');
+            const signLanguageOutputDiv = document.getElementById('signLanguageOutput');
+            const hieroglyphsOutputDiv = document.getElementById('hieroglyphsOutput');
+            const a1z26OutputDiv = document.getElementById('a1z26Output');
+            const atbashOutputDiv = document.getElementById('atbashOutput');
+            const caesarOutputDiv = document.getElementById('caesarOutput');
+            const baconOutputDiv = document.getElementById('baconOutput');
+
+            if (inputText === "") {
+                morseOutputDiv.style.visibility = "hidden";
+                binaryOutputDiv.style.visibility = "hidden";
+                brailleOutputDiv.style.visibility = "hidden";
+                base64OutputDiv.style.visibility = "hidden";
+                signLanguageOutputDiv.style.visibility = "hidden";
+                hieroglyphsOutputDiv.style.visibility = "hidden";
+                a1z26OutputDiv.style.visibility = "hidden";
+                atbashOutputDiv.style.visibility = "hidden";
+                caesarOutputDiv.style.visibility = "hidden";
+                baconOutputDiv.style.visibility = "hidden";
+            } else {
+                morseOutputDiv.style.visibility = "visible";
+                morseOutputDiv.textContent = "Morse Code: " + morseText;
+                binaryOutputDiv.style.visibility = "visible";
+                binaryOutputDiv.textContent = "Binary: " + binaryText;
+                brailleOutputDiv.style.visibility = "visible";
+                brailleOutputDiv.textContent = "Braille: " + brailleText;
+                base64OutputDiv.style.visibility = "visible";
+                base64OutputDiv.textContent = "Base64: " + base64Text;
+                signLanguageOutputDiv.style.visibility = "visible";
+                signLanguageOutputDiv.innerHTML = "Sign Language: " + signLanguageText;
+                hieroglyphsOutputDiv.style.visibility = "visible";
+                hieroglyphsOutputDiv.textContent = "Hieroglyphs: " + hieroglyphsText;
+                a1z26OutputDiv.style.visibility = "visible";
+                a1z26OutputDiv.textContent = "A1Z26: " + a1z26Text;
+                atbashOutputDiv.style.visibility = "visible";
+                atbashOutputDiv.textContent = "Atbash: " + atbashText;
+                caesarOutputDiv.style.visibility = "visible";
+                caesarOutputDiv.textContent = "Caesar Cipher: " + caesarText;
+                baconOutputDiv.style.visibility = "visible";
+                baconOutputDiv.textContent = "Francis Bacon's Cipher: " + baconText;
+            }
+        });
+    </script>
+</body>
+</html>
