@@ -1,0 +1,251 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Log</title>
+    <!-- Favicon link -->
+    <link rel="icon" href="https://raw.githubusercontent.com/FreddieThePebble/Travel-Log/refs/heads/main/Icon.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(45deg, #6a11cb, #2575fc, #4e4376, #2b5876);
+            background-size: 300% 300%; /* Adjusted for a smoother transition */
+            animation: gradientAnimation 20s ease infinite;
+            color: #E0E0E0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            margin: 0;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Luckiest Guy', cursive;
+        }
+
+        .content {
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] { margin-right: 10px; }
+
+        .icons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .icons img {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
+
+        .text-line {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+            color: #E0E0E0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Log</h1>
+
+        <div id="countries" class="content">
+            <div class="icons">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/UI/refs/heads/main/icons/house.png" alt="Home" title="Home" onclick="playSound('toggle'); window.open('https://bit.ly/PebbleGames', '_blank')">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/UI/refs/heads/main/icons/book.png" alt="Wiki" title="Wiki" onclick="playSound('toggle'); window.open('https://github.com/FreddieThePebble/Travel-Log/wiki', '_blank')">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/UI/refs/heads/main/icons/link.png" alt="Link" title="Link" onclick="playSound('toggle'); copyToClipboard()">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/UI/refs/heads/main/icons/code.png" alt="Code" title="Code" onclick="playSound('toggle'); randomCodeRedirect()">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/UI/refs/heads/main/icons/import.png" alt="Import" title="Import" onclick="playSound('confirm'); triggerFileInput()">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/UI/refs/heads/main/icons/export.png" alt="Export" title="Export" onclick="playSound('confirm'); exportCountries()">
+                <img src="https://raw.githubusercontent.com/FreddieThePebble/UI/refs/heads/main/icons/trash.png" alt="Clear" title="Clear" onclick="playSound('error'); clearList('country-list')">
+            </div>
+            <div class="text-line">
+                <p id="country-counter">Loading...</p>
+            </div>
+            <ul id="country-list" class="checklist"></ul>
+        </div>
+    </div>
+
+    <input type="file" id="fileInput" style="display:none" onchange="importCountries(event)" />
+
+    <script>
+        const totalCountries = 196;
+
+        function fetchData(url, listId, cookieName) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    const items = data.split('\n').map(item => item.trim());
+                    const list = document.getElementById(listId);
+
+                    items.forEach(item => {
+                        if (item) {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<input type="checkbox" id="${item}" onclick="saveToCookies('${cookieName}'); updateCounter(); playSound('tick')" /><label for="${item}">${item}</label>`;
+                            list.appendChild(li);
+                        }
+                    });
+
+                    loadFromCookies(cookieName);
+                    updateCounter();
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        fetchData('https://raw.githubusercontent.com/FreddieThePebble/Travel-Log/refs/heads/main/lists/countries.txt', 'country-list', 'TravelLog_Countries');
+
+        function saveToCookies(cookieName) {
+            const checkedItems = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                checkedItems.push(cb.nextElementSibling.textContent.trim());
+            });
+
+            document.cookie = `${cookieName}=${JSON.stringify(checkedItems)}; path=/; max-age=31536000`;
+        }
+
+        function loadFromCookies(cookieName) {
+            const cookies = document.cookie.split('; ');
+            const cookie = cookies.find(row => row.startsWith(`${cookieName}=`));
+            if (cookie) {
+                const checkedItems = JSON.parse(cookie.split('=')[1]);
+                document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                    cb.checked = checkedItems.includes(cb.nextElementSibling.textContent.trim());
+                });
+            }
+        }
+
+        function updateCounter() {
+            const checkedItems = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const percentageVisited = ((checkedItems / totalCountries) * 100).toFixed(2);
+            const simplifiedRatio = simplifyRatio(checkedItems, totalCountries);
+            document.getElementById('country-counter').textContent = `${checkedItems}/${totalCountries} visited, ${percentageVisited}% visited, ${simplifiedRatio} visited`;
+        }
+
+        function simplifyRatio(visited, total) {
+            const divisor = gcd(visited, total);
+            return `${visited / divisor}:${total / divisor}`;
+        }
+
+        function gcd(a, b) {
+            while (b) [a, b] = [b, a % b];
+            return a;
+        }
+
+        function clearList(listId) {
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+            document.cookie = `TravelLog_Countries=; path=/; max-age=0`;
+            updateCounter();
+        }
+
+        function playSound(type) {
+            let sound;
+            switch (type) {
+                case 'tick':
+                    sound = new Audio('https://github.com/FreddieThePebble/UI/raw/refs/heads/main/sfx/tick.mp3');
+                    break;
+                case 'error':
+                    sound = new Audio('https://github.com/FreddieThePebble/UI/raw/refs/heads/main/sfx/error.mp3');
+                    break;
+                case 'confirm':
+                    sound = new Audio('https://github.com/FreddieThePebble/UI/raw/refs/heads/main/sfx/confirm.mp3');
+                    break;
+                case 'toggle':
+                    sound = new Audio('https://github.com/FreddieThePebble/UI/blob/main/sfx/toggle.mp3');
+                    break;
+                default:
+                    return;
+            }
+            sound.play();
+        }
+
+        function copyToClipboard() {
+            navigator.clipboard.writeText("https://freddiethepebble.github.io/Travel-Log/").then(() => {
+                alert("Link copied to clipboard!");
+            });
+        }
+
+        function randomCodeRedirect() {
+            const urls = [
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://github.com/FreddieThePebble/Travel-Log/tree/main",
+                "https://www.youtube.com/watch?v=pqPWVOgoYXc"
+            ];
+            window.open(urls[Math.floor(Math.random() * urls.length)], "_blank");
+        }
+
+        function triggerFileInput() {
+            document.getElementById('fileInput').click();
+        }
+
+        function importCountries(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const fileContent = e.target.result;
+                    const importedCountries = fileContent.split('\n').map(line => line.trim()).filter(line => line);
+
+                    // Clear existing checkboxes first
+                    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+
+                    // Now update checkboxes based on the imported countries
+                    document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                        const countryName = cb.nextElementSibling.textContent.trim();
+                        if (importedCountries.includes(countryName)) {
+                            cb.checked = true;
+                        }
+                    });
+
+                    saveToCookies('TravelLog_Countries');
+                    updateCounter();
+                };
+                reader.readAsText(file);
+            }
+        }
+
+        function exportCountries() {
+            const checkedItems = [];
+            document.querySelectorAll('input[type="checkbox"]:checked').forEach(cb => {
+                checkedItems.push(cb.nextElementSibling.textContent.trim());
+            });
+
+            const blob = new Blob([checkedItems.join('\n')], { type: 'text/plain' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'visited_countries.txt';
+            link.click();
+        }
+    </script>
+</body>
+</html>
