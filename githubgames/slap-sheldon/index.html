@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slap Simulator</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/FreddieThePebble/Slap-Sheldon/refs/heads/main/Sheldon.png">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+        }
+        canvas {
+            display: block;
+            flex: 1;
+            width: 100%;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 20px; /* Thicker slider for usability */
+            background: #555;
+            outline: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        input[type="range"]:hover {
+            opacity: 1;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 30px; /* Bigger thumb for easier interaction */
+            height: 30px;
+            background: #fff;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="slapCanvas"></canvas>
+    <input type="range" id="slider" min="0" max="100" value="0">
+
+    <video id="slapVideo" loop muted>
+        <source src="https://github.com/FreddieThePebble/Slap-Sheldon/raw/refs/heads/main/Slap.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        const canvas = document.getElementById('slapCanvas');
+        const ctx = canvas.getContext('2d');
+        const video = document.getElementById('slapVideo');
+        const slider = document.getElementById('slider');
+
+        // Set up canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight - slider.offsetHeight;
+
+        // Draw video frames to canvas
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const videoWidth = canvas.width;
+            const videoHeight = (video.videoHeight / video.videoWidth) * videoWidth;
+
+            // Center video vertically
+            const yOffset = (canvas.height - videoHeight) / 2;
+
+            ctx.drawImage(video, 0, yOffset, videoWidth, videoHeight);
+            requestAnimationFrame(draw);
+        }
+
+        // Update the slider when video time changes
+        video.addEventListener('timeupdate', () => {
+            const progress = (video.currentTime / video.duration) * 100;
+            slider.value = progress;
+        });
+
+        // Update the video position when the slider is moved
+        slider.addEventListener('input', () => {
+            const progress = slider.value / 100;
+            video.currentTime = progress * video.duration;
+        });
+
+        // Handle arrow keys for navigation
+        document.addEventListener('keydown', (event) => {
+            const step = 0.1; // Seconds to move the video by
+            if (event.key === 'ArrowLeft') {
+                video.currentTime = Math.max(0, video.currentTime - step); // Move backward
+            } else if (event.key === 'ArrowRight') {
+                video.currentTime = Math.min(video.duration, video.currentTime + step); // Move forward
+            }
+        });
+
+        // Start the animation loop once the video is ready
+        video.addEventListener('loadeddata', () => {
+            draw();
+        });
+
+        // Prevent video from auto-playing by pausing it
+        video.pause();
+    </script>
+</body>
+</html>
