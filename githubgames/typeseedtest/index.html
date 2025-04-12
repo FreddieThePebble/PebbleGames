@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speed Typing Test</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/logo.png" type="image/png">
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #2c3e50, #34495e);
+      color: #ecf0f1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    #start-button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background: #e74c3c;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    #start-button:hover {
+      background: #c0392b;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      margin: 20px;
+    }
+
+    #word {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    #input-container input {
+      padding: 10px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    #result {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #result p {
+      font-size: 1.2rem;
+      margin: 5px 0;
+    }
+
+    /* Icons Row */
+    #icons-row {
+      display: none;
+      flex-direction: row;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    #icons-row img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    #icons-row img:hover {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+
+    /* Bottom Icons */
+    #info-icon,
+    #music-icon {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    #info-icon:hover,
+    #music-icon:hover {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+
+    #info-icon {
+      bottom: 20px;
+      right: 20px;
+    }
+
+    #music-icon {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    /* Popup for link copied */
+    #popup {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2ecc71;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Speed Typing Test</h1>
+  <button id="start-button">Start Test</button>
+  <div id="countdown"></div>
+  <div id="word" style="display: none;"></div>
+  <div id="input-container" style="display: none;">
+    <input type="text" id="typing-input" placeholder="Type here..." />
+  </div>
+  <div id="result"></div>
+  <div id="icons-row">
+    <img src="https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/ui/images/restart.png" alt="Restart Icon" onclick="handleIconClick(redirectToURL)" />
+    <img src="https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/ui/images/share.png" alt="Share Icon" onclick="handleIconClick(copyToClipboard)" />
+    <img src="https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/ui/images/rickroll.png" alt="Rickroll Icon" onclick="handleIconClick(openRickroll)" />
+    <img src="https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/ui/images/exit.png" alt="Exit Icon" onclick="handleIconClick(redirectToExitLink)" />
+  </div>
+  <img id="info-icon" src="https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/ui/images/information.png" alt="Info Icon" />
+  <img id="music-icon" src="https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/ui/images/musicOff.png" alt="Music Off Icon" />
+  <div id="popup">Link copied</div>
+
+  <script>
+    const words = ["quick", "brown", "fox", "jumps", "over", "lazy", "dog"];
+    let currentWord = "";
+    let startTime, endTime;
+    let sfxEnabled = true;
+
+    const doneSfx = new Audio("https://github.com/FreddieThePebble/TypeSpeed-Test/raw/refs/heads/main/ui/sfx/done.mp3");
+    const typeSfx = new Audio("https://github.com/FreddieThePebble/TypeSpeed-Test/raw/refs/heads/main/ui/sfx/type.mp3");
+    const clickSfx = new Audio("https://github.com/FreddieThePebble/TypeSpeed-Test/raw/refs/heads/main/ui/sfx/click.mp3");
+    const toggleSfx = new Audio("https://github.com/FreddieThePebble/TypeSpeed-Test/raw/refs/heads/main/ui/sfx/toggle.mp3");
+    const startSfx = new Audio("https://github.com/FreddieThePebble/TypeSpeed-Test/raw/refs/heads/main/ui/sfx/start.mp3");
+
+    const startButton = document.getElementById("start-button");
+    const countdownDiv = document.getElementById("countdown");
+    const wordDiv = document.getElementById("word");
+    const inputContainer = document.getElementById("input-container");
+    const typingInput = document.getElementById("typing-input");
+    const resultDiv = document.getElementById("result");
+    const iconsRow = document.getElementById("icons-row");
+    const infoIcon = document.getElementById("info-icon");
+    const musicIcon = document.getElementById("music-icon");
+    const popup = document.getElementById("popup");
+
+    function startTest() {
+      startButton.style.display = "none";
+      infoIcon.style.display = "none"; 
+      musicIcon.style.display = "none"; 
+      
+      startSfx.play();
+      countdown(4);
+    }
+
+    function countdown(seconds) {
+      countdownDiv.textContent = seconds === 0 ? "0" : seconds;
+      if (seconds > 0) {
+        setTimeout(() => countdown(seconds - 1), 1000);
+      } else {
+        setTimeout(() => {
+          countdownDiv.textContent = "0";
+          startTypingTest();
+        }, 1000);
+      }
+    }
+
+    function startTypingTest() {
+      countdownDiv.style.display = "none";
+      wordDiv.style.display = "block";
+      inputContainer.style.display = "block";
+      resultDiv.textContent = "";
+      typingInput.value = "";
+
+      currentWord = words[Math.floor(Math.random() * words.length)];
+      wordDiv.textContent = `Type this: ${currentWord}`;
+      typingInput.focus();
+      startTime = performance.now();
+
+      typingInput.addEventListener("input", checkTyping);
+    }
+
+    function checkTyping() {
+      if (sfxEnabled) {
+        typeSfx.currentTime = 0;
+        typeSfx.play();
+      }
+
+      if (typingInput.value.length === currentWord.length) {
+        endTime = performance.now();
+        const totalTime = ((endTime - startTime) / 1000).toFixed(2);
+        const averageTimePerLetter = (totalTime / currentWord.length).toFixed(2);
+        showResult(totalTime, averageTimePerLetter);
+        typingInput.removeEventListener("input", checkTyping);
+      }
+    }
+
+    function showResult(totalTime, averageTimePerLetter) {
+      resultDiv.innerHTML = `
+        <p>Finished! Time: ${totalTime}s</p>
+        <p>Avg. Time per Letter: ${averageTimePerLetter}s</p>
+      `;
+      doneSfx.play();
+      iconsRow.style.display = "flex";
+    }
+
+    function handleIconClick(action) {
+      clickSfx.play();
+      action();
+    }
+
+    function redirectToURL() {
+      window.location.href = "https://freddiethepebble.github.io/TypeSpeed-Test/";
+    }
+
+    function copyToClipboard() {
+      const url = "https://freddiethepebble.github.io/TypeSpeed-Test/";
+      navigator.clipboard.writeText(url);
+      popup.style.display = "block";
+      setTimeout(() => popup.style.display = "none", 3000);
+    }
+
+    function openRickroll() {
+      window.open("https://www.youtube.com/watch?v=pqPWVOgoYXc", "_blank");
+    }
+
+    function redirectToExitLink() {
+      window.location.href = "https://sites.google.com/view/pepplegames";
+    }
+
+    function toggleMusic() {
+      sfxEnabled = !sfxEnabled;
+      musicIcon.src = sfxEnabled
+        ? "https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/ui/images/musicOn.png"
+        : "https://raw.githubusercontent.com/FreddieThePebble/TypeSpeed-Test/refs/heads/main/ui/images/musicOff.png";
+      if (sfxEnabled) {
+        toggleSfx.play();
+      }
+    }
+
+    startButton.addEventListener("click", startTest);
+    infoIcon.addEventListener("click", () => window.open('https://github.com/FreddieThePebble/TypeSpeed-Test/blob/main/info.txt', '_blank'));
+    musicIcon.addEventListener("click", toggleMusic);
+  </script>
+</body>
+</html>
