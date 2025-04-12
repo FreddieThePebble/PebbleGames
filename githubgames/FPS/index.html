@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPS Compare</title>
+  <link rel="icon" href="https://raw.githubusercontent.com/FreddieThePebble/FPS/refs/heads/main/icon.png" type="image/png">
+  <style>
+    body {
+      margin: 0;
+      background-color: #121212; /* Dark background for dark mode */
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden; /* Prevent scrolling */
+    }
+    .ball-container {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly; /* Space out the balls evenly */
+      overflow: hidden;
+    }
+    .ball {
+      width: 30px;
+      height: 30px;
+      background-color: #00bcd4; /* Cyan color for the balls */
+      border-radius: 50%; /* Make the balls circular */
+      position: absolute;
+      left: 50px; /* Start position for the balls */
+    }
+    .fps-label {
+      position: absolute;
+      left: 10px; /* Move labels to the left of the line */
+      color: #ffffff;
+      font-size: 12px; /* Small font for FPS labels */
+      text-align: right; /* Align text to the right */
+    }
+    .line {
+      position: absolute;
+      width: calc(100% - 20px); /* Adjust width to account for label space */
+      height: 1px;
+      background-color: #ffffff; /* White lines */
+      left: 60px; /* Start lines after the labels */
+    }
+    .bounce-counter {
+      position: absolute;
+      right: 10px; /* Move counter to the right of the line */
+      color: #ffffff;
+      font-size: 12px;
+      text-align: left; /* Align text to the left */
+    }
+  </style>
+</head>
+<body>
+  <h1>FPS Compare</h1>
+  <div class="ball-container" id="ballContainer">
+    <!-- Balls, Lines, and Labels will be added by JavaScript -->
+  </div>
+  <script>
+    const fpsList = [128, 100, 80, 75, 60, 50, 45, 30, 25, 24, 20, 15, 10, 5, 1]; // List of FPS values
+    const ballContainer = document.getElementById('ballContainer'); // Reference to the ball container
+
+    let customBall; // Reference to the custom ball
+    let customBallInterval; // Interval for the custom ball animation
+
+    // Function to create a ball, its label, and a line
+    function createBall(fps, index, isCustom = false) {
+      const ball = document.createElement('div'); // Create the ball element
+      const label = document.createElement('div'); // Create the label element
+      const line = document.createElement('div'); // Create the line element
+      const counter = document.createElement('div'); // Create the bounce counter element
+
+      ball.classList.add('ball'); // Assign the ball class
+      label.classList.add('fps-label'); // Assign the FPS label class
+      line.classList.add('line'); // Assign the line class
+      counter.classList.add('bounce-counter'); // Assign the bounce counter class
+
+      label.textContent = isCustom ? `X FPS` : `${fps} FPS`; // Set the label text
+
+      const topPosition = index * 40; // Position the balls and lines vertically
+      ball.style.top = `${topPosition}px`;
+      label.style.top = `${topPosition}px`; // Align label with the line
+      line.style.top = `${topPosition + 15}px`; // Adjust line position slightly below the label
+      counter.style.top = `${topPosition}px`; // Align the counter with the line
+
+      counter.textContent = 0; // Initialize bounce count
+
+      ballContainer.appendChild(label); // Add the label to the container
+      ballContainer.appendChild(line); // Add the line to the container
+      ballContainer.appendChild(ball); // Add the ball to the container
+      ballContainer.appendChild(counter); // Add the counter to the container
+
+      if (!isCustom) {
+        animateBall(ball, fps, counter, line); // Animate the ball at the given FPS
+      } else {
+        customBall = ball; // Save reference to the custom ball
+        animateCustomBall(ball, parseInt(fpsSlider.value), counter, line); // Start animation for custom ball
+      }
+    }
+
+    // Function to animate a single ball at a given FPS
+    function animateBall(ball, fps, counter, line) {
+      let position = 50; // Starting position
+      let direction = 1; // Initial direction (1 = right, -1 = left)
+      const speed = 2; // Speed of movement in pixels per frame
+
+      function move() {
+        position += speed * direction; // Update position
+
+        // Reverse direction if the ball hits the edge
+        if (position >= ballContainer.clientWidth - 30 || position <= 50) {
+          direction *= -1;
+          let bounceCount = parseInt(counter.textContent); // Get the current bounce count
+          bounceCount++; // Increment bounce count
+          counter.textContent = bounceCount; // Update the bounce count on the ball's counter
+        }
+
+        ball.style.left = `${position}px`; // Update the ball's position
+      }
+
+      // Set an interval based on the FPS value
+      setInterval(move, 1000 / fps);
+    }
+
+    // Function to animate the custom ball with adjustable FPS
+    function animateCustomBall(ball, fps, counter, line) {
+      let position = 50; // Starting position
+      let direction = 1; // Initial direction (1 = right, -1 = left)
+      const speed = 2; // Speed of movement in pixels per frame
+
+      // Clear any existing interval
+      if (customBallInterval) {
+        clearInterval(customBallInterval);
+      }
+
+      function move() {
+        position += speed * direction; // Update position
+
+        // Reverse direction if the ball hits the edge
+        if (position >= ballContainer.clientWidth - 30 || position <= 50) {
+          direction *= -1;
+          let bounceCount = parseInt(counter.textContent); // Get the current bounce count
+          bounceCount++; // Increment bounce count
+          counter.textContent = bounceCount; // Update the bounce count on the ball's counter
+        }
+
+        ball.style.left = `${position}px`; // Update the ball's position
+      }
+
+      // Set a new interval based on the FPS value
+      customBallInterval = setInterval(move, 1000 / fps);
+    }
+
+    // Create balls, lines, and labels based on FPS list
+    fpsList.forEach((fps, index) => {
+      createBall(fps, index);
+    });
+
+    // Add the custom ball at the bottom
+    createBall(30, fpsList.length, true);
+
+    // Function to resize the lines when the window is resized
+    function resizeLines() {
+      const lines = document.querySelectorAll('.line');
+      const ballContainerWidth = ballContainer.clientWidth;
+
+      // Adjust the width of each line dynamically
+      lines.forEach((line) => {
+        line.style.width = `${ballContainerWidth - 20}px`;
+      });
+    }
+
+    // Call resizeLines on window resize
+    window.addEventListener('resize', resizeLines);
+
+    // Initial resize to set line widths
+    resizeLines();
+  </script>
+</body>
+</html>
