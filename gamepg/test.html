@@ -1,160 +1,237 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Page</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Name</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/icons/Games.png" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Luckiest+Guy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #121212;
+      --accent: #ff0000;
+      --text: #fff;
+      --font-title: 'Luckiest Guy', cursive;
+      --font-body: 'Comfortaa', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 16px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-family: var(--font-title);
+      font-size: 2rem;
+      color: var(--text);
+    }
+
+    .header-icons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .material-symbols-outlined {
+      color: var(--text);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .thumbnail {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #333 url('thumbnail.jpg') center/cover no-repeat;
+      border-radius: 8px;
+      margin: 12px 0;
+      border-style: solid;
+      border-width: 2px;
+      border-color: var(--accent);
+    }
+
+    section {
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .play {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .play img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .platforms {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .platforms img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .desc-short {
+      font-weight: bold;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .desc-long {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .dates {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      text-align: center;
+      margin-top: 8px;
+    }
+
+    iframe.youtube {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      border-style: solid;
+      border-width: 2px;
+      border-color: var(--accent);
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+      gap: 8px;
+    }
+
+    .screenshots a img {
+      width: 100%;
+      border-radius: 6px;
+      display: block;
+      border-style: solid;
+      border-width: 2px;
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 600px) {
+      .title {
+        font-size: 1.5rem;
+      }
+
+      .material-symbols-outlined {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <a href="https://freddiethepebble.github.io/PebbleGames/games">
-            <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/Exit-Left.png" alt="Exit Icon">
+  <div class="container">
+<header>
+    <div class="title">Game Name</div>
+    <div class="header-icons">
+      <span id="shareIcon" class="material-symbols-outlined">share</span>
+      <span id="closeIcon" class="material-symbols-outlined">close</span>
+    </div>
+  </header>
+  
+
+    <div class="thumbnail"></div>
+
+    <section>
+      <div class="play">
+        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/Steam.png" alt="Steam">
+        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/itch.png" alt="itch.io">
+        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/Epic.png" alt="Epic Games">
+      </div>
+    </section>
+
+    <section>
+      <div class="desc-short">Hack the net. Defy the rules. Beat the system.</div>
+    </section>
+
+    <section>
+        <div class="platforms">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/main/icons/ui/platforms/software/Windows.png" alt="PC">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/main/icons/ui/platforms/software/Android.png" alt="Android">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/main/icons/ui/platforms/software/Apple.png" alt="iOS">
+        </div>
+      </section>
+      
+
+    <section>
+      <div class="desc-long">
+        Enter a digital world full of secrets, glitches, and puzzles. Use your brain and reflexes to defeat the firewall and discover what lies behind the code. Perfect for fans of chaos and challenge.
+      </div>
+      <div class="dates">
+        <p><strong>Created:</strong> 19 April 2025</p>
+        <p><strong>Last Updated:</strong> 19 April 2025</p>
+      </div>
+    </section>
+
+    <section>
+      <iframe class="youtube" src="https://www.youtube.com/embed/dQw4w9WgXcQ" allowfullscreen></iframe>
+    </section>
+
+    <section>
+      <div class="screenshots">
+        <a href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" target="_blank">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 1">
         </a>
-        Game Name
-        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/share.png" alt="Share Icon" onclick="copyToClipboard()">
-    </header>
-
-    <div class="container">
-        <div class="header-content">
-            <div class="container">
-        <div class="header-content">
-            <div class="links-box">
-                <h2>Related Links</h2>
-                <p><a href="february-sale.html">Link 1</a></p>
-                <p><a href="summer-sale.html">Link 2</a></p>
-                <p><a href="halloween-sale.html">Link 3</a></p>
-                <p><a href="christmas-sale.html">Link 4</a></p>
-            </div>
-            <div class="poster-container">
-                <img class="poster" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Poster%20Placeholder.png" alt="Game Poster">
-                <div class="description">
-                    <div class="platform-icons">
-                        <img class="platform-icon" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/software/Windows.png" alt="Windows" data-platform="Windows">
-                        <img class="platform-icon" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/software/Apple.png" alt="Apple" data-platform="Apple">
-                        <img class="platform-icon" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/software/Webpage.png" alt="Web" data-platform="Webpage">
-                    </div>
-                    <p>Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description. Placeholder Description.Placeholder Description. Placeholder Description. Placeholder Description.</p>
-                    <div class="platform-links">
-                    <a href="www.google.com" target="_blank">
-                            <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/Steam.png" alt="Steam" style="width: 50px; height: 50px;">
-                        </a>
-                        <a href="www.google.com" target="_blank">
-                            <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/itch.png" alt="itch.io" style="width: 50px; height: 50px;">
-                        </a>
-                        <a href="www.google.com" target="_blank">
-                            <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/Epic.png" alt="Epic Games" style="width: 50px; height: 50px;">
-                        </a>
-                        <a href="www.google.com" target="_blank">
-                            <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/GameJolt.png" alt="GameJolt" style="width: 50px; height: 50px;">
-                        </a>
-                        <a href="www.google.com" target="_blank">
-                            <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/Github.png" alt="GitHub" style="width: 50px; height: 50px;">
-                        </a>
-                        <a href="www.google.com" target="_blank">
-                            <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/Google.png" alt="Google" style="width: 50px; height: 50px;">
-
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="content-container">
-
-    <div class="pebble-sales-box">
-    </div>
-    <div class="poster">
-    </div>
-</div>  
-        <div class="date-box">
-            <p>Date Created: __/__/____ Last Update: __/__/____</p>
-        </div>
-        <div class="yt-trailer">
-            <iframe width="100%" height="450" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div class="right-box">
-                <p>The truth is, this piece of text is a waste, there is no important infomation here. Basicly i felt this website was very emety and boring so i decided to add some crap arround to make the page looks more intresting but... the problem was i had no intresting info to put in this box so im just kinda waffling. And i know only 0.00001% of the peaple on this page will read this prapgraph so who cares?. tbh i always ignore game descriptions. i just look at the trailour/screenshots and might play. lol. i just noticed the text does not fill the box enought so more waffle blah blah blah boo boo boo e e e piss piss penis wow that was fun wan't it</p>
-            </div>
-        </div>
-        <div class="screenshots">
-            <img class="screenshot" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 1" onclick="openScreenshot('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png')">
-            <img class="screenshot" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 2" onclick="openScreenshot('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png')">
-            <img class="screenshot" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 3" onclick="openScreenshot('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png')">
-            <img class="screenshot" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 3" onclick="openScreenshot('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png')">
-            <img class="screenshot" src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 3" onclick="openScreenshot('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png')">
-        </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Genre</td>
-                        <td>Adventure</td>
-                    </tr>
-                    <tr>
-                        <td>Difficulty</td>
-                        <td>Easy/Medium/Hard/Rage</td>
-                    </tr>
-                    <tr>
-                        <td>Dimension</td>
-                        <td>2D or 3D</td>
-                    </tr>
-                    <tr>
-                        <td>Game Engine</td>
-                        <td>Godot</td>
-                    </tr>
-                    <tr>
-                        <td>Players</td>
-                        <td>Singleplayer</td>
-                    </tr>
-                    <tr>
-                        <td>Language</td>
-                        <td>English</td>
-                    </tr>
-                    <tr>
-                        <td>State</td>
-                        <td>Published/Prototype</td>
-                    </tr>
-                    <tr>
-                        <td>Cost</td>
-                        <td>Free/Paid</td>
-                    </tr>
-                    <tr>
-                        <td>Platforms</td>
-                        <td>Online, Windows, Mac</td>
-                    </tr>
-                    <tr>
-                        <td>Hardware</td>
-                        <td>PC, Mobile, Console</td>
-                    </tr>
-                    <tr>
-                        <td>Host</td>
-                        <td>Steam, itch.io</td>
-                    </tr>
-                    <tr>
-                        <td>Controlls</td>
-                        <td>PC, Mouse</td>
-                    </tr>
-                    <tr>
-                        <td>Internet</td>
-                        <td>Reqired/Not Needed/Reccomended</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <div id="mobile-popup">
-        <p>This website is for PC only. On phones, there's a bug where the page goes weird.</p>
-        <p>Go to <a href="https://freddiethepebble.github.io/PebbleGames" style="color: #00d4ff;">freddiethepebble.github.io/PebbleGames</a> on your PC.</p>
-    </div>
-
-    <script src="scripts.js"></script>
-
+        <a href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" target="_blank">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 2">
+        </a>
+        <a href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" target="_blank">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 3">
+        </a>
+        <a href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" target="_blank">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 4">
+        </a>
+        <a href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" target="_blank">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 5">
+        </a>
+        <a href="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" target="_blank">
+          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/templates/Screenshot%20Placeholder.png" alt="Screenshot 6">
+        </a>
+      </div>
+    </section>
+  </div>
 </body>
+
 </html>
