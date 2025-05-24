@@ -1,1 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Convert It</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #e0e0e0;
+    }
 
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      background-color: #1e1e1e;
+      padding: 10px;
+    }
+
+    .tabs button {
+      background-color: #333;
+      border: none;
+      color: white;
+      padding: 10px 15px;
+      margin: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .tabs button.active {
+      background-color: #6200ea;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    input {
+      margin: 5px 0;
+      padding: 5px;
+      width: 100%;
+      max-width: 300px;
+      background-color: #222;
+      color: #fff;
+      border: 1px solid #444;
+      border-radius: 3px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="tabs">
+    <button onclick="showTab('numbers')">Numbers</button>
+    <button onclick="showTab('datetime')">Date & Time</button>
+    <button onclick="showTab('temp')">Temperature</button>
+    <button onclick="showTab('distance')">Distance</button>
+    <button onclick="showTab('weight')">Weight/Mass</button>
+    <button onclick="showTab('volume')">Volume</button>
+    <button onclick="showTab('area')">Area</button>
+    <button onclick="showTab('speed')">Speed</button>
+    <button onclick="showTab('pressure')">Pressure</button>
+    <button onclick="showTab('energy')">Energy</button>
+    <button onclick="showTab('power')">Power</button>
+    <button onclick="showTab('data')">Data</button>
+    <button onclick="showTab('colour')">Colour</button>
+  </div>
+
+  <div id="numbers" class="tab-content">Placeholder for Numbers</div>
+  <div id="datetime" class="tab-content">Placeholder for Date & Time</div>
+
+  <!-- Temperature Converter -->
+  <div id="temp" class="tab-content">
+    <h2>Temperature Converter</h2>
+    <label>Celsius (°C): <input type="number" id="celsius" oninput="convertTemperature('celsius')"></label>
+    <label>Fahrenheit (°F): <input type="number" id="fahrenheit" oninput="convertTemperature('fahrenheit')"></label>
+  </div>
+
+  <!-- Distance Converter -->
+  <div id="distance" class="tab-content">
+    <h2>Distance Converter</h2>
+    <p>Enter a value in any box:</p>
+    <div id="distanceConverter">
+      <label>Picometer (pm): <input type="number" id="pm" oninput="convertDistance('pm')"></label>
+      <label>Nanometer (nm): <input type="number" id="nm" oninput="convertDistance('nm')"></label>
+      <label>Micrometer (µm): <input type="number" id="um" oninput="convertDistance('um')"></label>
+      <label>Millimeter (mm): <input type="number" id="mm" oninput="convertDistance('mm')"></label>
+      <label>Centimeter (cm): <input type="number" id="cm" oninput="convertDistance('cm')"></label>
+      <label>Decimeter (dm): <input type="number" id="dm" oninput="convertDistance('dm')"></label>
+      <label>Meter (m): <input type="number" id="m" oninput="convertDistance('m')"></label>
+      <label>Decameter (dam): <input type="number" id="dam" oninput="convertDistance('dam')"></label>
+      <label>Hectometer (hm): <input type="number" id="hm" oninput="convertDistance('hm')"></label>
+      <label>Kilometer (km): <input type="number" id="km" oninput="convertDistance('km')"></label>
+      <label>Megameter (Mm): <input type="number" id="Mm" oninput="convertDistance('Mm')"></label>
+      <label>Inch (in): <input type="number" id="in" oninput="convertDistance('in')"></label>
+      <label>Foot (ft): <input type="number" id="ft" oninput="convertDistance('ft')"></label>
+      <label>Yard (yd): <input type="number" id="yd" oninput="convertDistance('yd')"></label>
+      <label>Mile (mi): <input type="number" id="mi" oninput="convertDistance('mi')"></label>
+      <label>Nautical Mile: <input type="number" id="nmi" oninput="convertDistance('nmi')"></label>
+      <label>Light-year: <input type="number" id="ly" oninput="convertDistance('ly')"></label>
+    </div>
+  </div>
+
+  <div id="weight" class="tab-content">Placeholder for Weight/Mass</div>
+  <div id="volume" class="tab-content">Placeholder for Volume</div>
+  <div id="area" class="tab-content">Placeholder for Area</div>
+  <div id="speed" class="tab-content">Placeholder for Speed</div>
+  <div id="pressure" class="tab-content">Placeholder for Pressure</div>
+  <div id="energy" class="tab-content">Placeholder for Energy</div>
+  <div id="power" class="tab-content">Placeholder for Power</div>
+
+  <!-- Data Converter -->
+  <div id="data" class="tab-content">
+    <h2>Data Converter</h2>
+    <p>Enter a value in any box:</p>
+    <label>Bit: <input type="number" id="bit" oninput="convertData('bit')"></label>
+    <label>Nibble (4 bits): <input type="number" id="nibble" oninput="convertData('nibble')"></label>
+    <label>Byte (8 bits): <input type="number" id="byte" oninput="convertData('byte')"></label>
+    <label>Kilobyte (KB): <input type="number" id="kb" oninput="convertData('kb')"></label>
+    <label>Megabyte (MB): <input type="number" id="mb" oninput="convertData('mb')"></label>
+    <label>Gigabyte (GB): <input type="number" id="gb" oninput="convertData('gb')"></label>
+    <label>Terabyte (TB): <input type="number" id="tb" oninput="convertData('tb')"></label>
+    <label>Petabyte (PB): <input type="number" id="pb" oninput="convertData('pb')"></label>
+    <label>Exabyte (EB): <input type="number" id="eb" oninput="convertData('eb')"></label>
+    <label>Zettabyte (ZB): <input type="number" id="zb" oninput="convertData('zb')"></label>
+  </div>
+
+  <!-- Colour Converter -->
+  <div id="colour" class="tab-content">
+    <h2>Colour Converter</h2>
+    <label>HEX: <input type="text" id="hex" oninput="convertColour('hex')"></label>
+    <label>RGB: <input type="text" id="rgb" oninput="convertColour('rgb')"></label>
+    <label>HSL: <input type="text" id="hsl" oninput="convertColour('hsl')"></label>
+    <label>CMYK: <input type="text" id="cmyk" oninput="convertColour('cmyk')"></label>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      const tabs = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+
+      const buttons = document.querySelectorAll('.tabs button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      const activeBtn = Array.from(buttons).find(b => b.textContent.toLowerCase().replace(/[^a-z]/g, '') === tabId);
+      if (activeBtn) activeBtn.classList.add('active');
+    }
+
+    showTab('numbers');
+
+    // Colour conversion (same as before)
+    function convertColour(from) {
+      const hexInput = document.getElementById('hex');
+      const rgbInput = document.getElementById('rgb');
+      const hslInput = document.getElementById('hsl');
+      const cmykInput = document.getElementById('cmyk');
+
+      // Simple parse helpers
+      function hexToRgb(hex) {
+        hex = hex.replace(/^#/, '');
+        if(hex.length === 3) {
+          hex = hex.split('').map(x => x+x).join('');
+        }
+        const bigint = parseInt(hex, 16);
+        const r = (bigint >> 16) & 255;
+        const g = (bigint >> 8) & 255;
+        const b = bigint & 255;
+        return [r,g,b];
+      }
+
+      function rgbToHex(r, g, b) {
+        return "#" + [r, g, b].map(x => x.toString(16).padStart(2, '0')).join('');
+      }
+
+      function rgbToHsl(r, g, b) {
+        r /= 255; g /= 255; b /= 255;
+        const max = Math.max(r, g, b);
+        const min = Math.min(r, g, b);
+        let h, s, l = (max + min) / 2;
+
+        if(max === min){
+          h = s = 0;
+        } else {
+          const d = max - min;
+          s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+          switch(max){
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+          }
+          h /= 6;
+        }
+        return [Math.round(h*360), Math.round(s*100), Math.round(l*100)];
+      }
+
+      function hslToRgb(h, s, l) {
+        h /= 360; s /= 100; l /= 100;
+        let r, g, b;
+
+        if(s === 0){
+          r = g = b = l;
+        } else {
+          const hue2rgb = (p, q, t) => {
+            if(t < 0) t += 1;
+            if(t > 1) t -= 1;
+            if(t < 1/6) return p + (q - p) * 6 * t;
+            if(t < 1/2) return q;
+            if(t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+            return p;
+          }
+          const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+          const p = 2 * l - q;
+          r = hue2rgb(p, q, h + 1/3);
+          g = hue2rgb(p, q, h);
+          b = hue2rgb(p, q, h - 1/3);
+        }
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+      }
+
+      function rgbToCmyk(r, g, b) {
+        if(r === 0 && g === 0 && b === 0) {
+          return [0, 0, 0, 100];
+        }
+        let c = 1 - (r / 255);
+        let m = 1 - (g / 255);
+        let y = 1 - (b / 255);
+
+        let k = Math.min(c, Math.min(m, y));
+        c = ((c - k) / (1 - k)) * 100;
+        m = ((m - k) / (1 - k)) * 100;
+        y = ((y - k) / (1 - k)) * 100;
+        k = k * 100;
+
+        return [Math.round(c), Math.round(m), Math.round(y), Math.round(k)];
+      }
+
+      function cmykToRgb(c, m, y, k) {
+        c /= 100; m /= 100; y /= 100; k /= 100;
+        let r = 255 * (1 - c) * (1 - k);
+        let g = 255 * (1 - m) * (1 - k);
+        let b = 255 * (1 - y) * (1 - k);
+        return [Math.round(r), Math.round(g), Math.round(b)];
+      }
+
+      if(from === 'hex'){
+        let hex = hexInput.value.trim();
+        if(/^#?[0-9a-fA-F]{3,6}$/.test(hex)){
+          if(hex[0] !== '#') hex = '#' + hex;
+          const [r, g, b] = hexToRgb(hex);
+          rgbInput.value = `${r}, ${g}, ${b}`;
+          const [h, s, l] = rgbToHsl(r, g, b);
+          hslInput.value = `${h}, ${s}%, ${l}%`;
+          const [c, m, y, k] = rgbToCmyk(r, g, b);
+          cmykInput.value = `${c}%, ${m}%, ${y}%, ${k}%`;
+        }
+      } else if(from === 'rgb'){
+        const rgbMatch = rgbInput.value.trim().match(/^(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})$/);
+        if(rgbMatch){
+          const r = Number(rgbMatch[1]);
+          const g = Number(rgbMatch[2]);
+          const b = Number(rgbMatch[3]);
+          if(r <= 255 && g <= 255 && b <= 255){
+            hexInput.value = rgbToHex(r, g, b);
+            const [h, s, l] = rgbToHsl(r, g, b);
+            hslInput.value = `${h}, ${s}%, ${l}%`;
+            const [c, m, y, k] = rgbToCmyk(r, g, b);
+            cmykInput.value = `${c}%, ${m}%, ${y}%, ${k}%`;
+          }
+        }
+      } else if(from === 'hsl'){
+        const hslMatch = hslInput.value.trim().match(/^(\d{1,3}),\s*(\d{1,3})%,\s*(\d{1,3})%$/);
+        if(hslMatch){
+          const h = Number(hslMatch[1]);
+          const s = Number(hslMatch[2]);
+          const l = Number(hslMatch[3]);
+          if(h <= 360 && s <= 100 && l <= 100){
+            const [r, g, b] = hslToRgb(h, s, l);
+            rgbInput.value = `${r}, ${g}, ${b}`;
+            hexInput.value = rgbToHex(r, g, b);
+            const [c, m, y, k] = rgbToCmyk(r, g, b);
+            cmykInput.value = `${c}%, ${m}%, ${y}%, ${k}%`;
+          }
+        }
+      } else if(from === 'cmyk'){
+        const cmykMatch = cmykInput.value.trim().match(/^(\d{1,3})%,\s*(\d{1,3})%,\s*(\d{1,3})%,\s*(\d{1,3})%$/);
+        if(cmykMatch){
+          const c = Number(cmykMatch[1]);
+          const m = Number(cmykMatch[2]);
+          const y = Number(cmykMatch[3]);
+          const k = Number(cmykMatch[4]);
+          if(c <= 100 && m <= 100 && y <= 100 && k <= 100){
+            const [r, g, b] = cmykToRgb(c, m, y, k);
+            rgbInput.value = `${r}, ${g}, ${b}`;
+            hexInput.value = rgbToHex(r, g, b);
+            const [h, s, l] = rgbToHsl(r, g, b);
+            hslInput.value = `${h}, ${s}%, ${l}%`;
+          }
+        }
+      }
+    }
+
+    // Temperature conversion
+    function convertTemperature(from) {
+      const cInput = document.getElementById('celsius');
+      const fInput = document.getElementById('fahrenheit');
+      if (from === 'celsius') {
+        const c = parseFloat(cInput.value);
+        if (!isNaN(c)) {
+          const f = c * 9 / 5 + 32;
+          fInput.value = f.toFixed(2);
+        } else {
+          fInput.value = '';
+        }
+      } else if (from === 'fahrenheit') {
+        const f = parseFloat(fInput.value);
+        if (!isNaN(f)) {
+          const c = (f - 32) * 5 / 9;
+          cInput.value = c.toFixed(2);
+        } else {
+          cInput.value = '';
+        }
+      }
+    }
+
+    // Data conversion
+    function convertData(from) {
+      const bitInput = document.getElementById('bit');
+      const nibbleInput = document.getElementById('nibble');
+      const byteInput = document.getElementById('byte');
+      const kbInput = document.getElementById('kb');
+      const mbInput = document.getElementById('mb');
+      const gbInput = document.getElementById('gb');
+      const tbInput = document.getElementById('tb');
+      const pbInput = document.getElementById('pb');
+      const ebInput = document.getElementById('eb');
+      const zbInput = document.getElementById('zb');
+
+      // Base unit: bit
+      let bitValue;
+
+      switch(from){
+        case 'bit':
+          bitValue = parseFloat(bitInput.value);
+          break;
+        case 'nibble':
+          bitValue = parseFloat(nibbleInput.value) * 4;
+          break;
+        case 'byte':
+          bitValue = parseFloat(byteInput.value) * 8;
+          break;
+        case 'kb':
+          bitValue = parseFloat(kbInput.value) * 8 * 1024;
+          break;
+        case 'mb':
+          bitValue = parseFloat(mbInput.value) * 8 * 1024 ** 2;
+          break;
+        case 'gb':
+          bitValue = parseFloat(gbInput.value) * 8 * 1024 ** 3;
+          break;
+        case 'tb':
+          bitValue = parseFloat(tbInput.value) * 8 * 1024 ** 4;
+          break;
+        case 'pb':
+          bitValue = parseFloat(pbInput.value) * 8 * 1024 ** 5;
+          break;
+        case 'eb':
+          bitValue = parseFloat(ebInput.value) * 8 * 1024 ** 6;
+          break;
+        case 'zb':
+          bitValue = parseFloat(zbInput.value) * 8 * 1024 ** 7;
+          break;
+        default:
+          bitValue = 0;
+      }
+
+      if (isNaN(bitValue)) return;
+
+      bitInput.value = bitValue.toLocaleString('fullwide', {useGrouping:false});
+      nibbleInput.value = (bitValue / 4).toLocaleString('fullwide', {useGrouping:false});
+      byteInput.value = (bitValue / 8).toLocaleString('fullwide', {useGrouping:false});
+      kbInput.value = (bitValue / 8 / 1024).toLocaleString('fullwide', {useGrouping:false});
+      mbInput.value = (bitValue / 8 / 1024 ** 2).toLocaleString('fullwide', {useGrouping:false});
+      gbInput.value = (bitValue / 8 / 1024 ** 3).toLocaleString('fullwide', {useGrouping:false});
+      tbInput.value = (bitValue / 8 / 1024 ** 4).toLocaleString('fullwide', {useGrouping:false});
+      pbInput.value = (bitValue / 8 / 1024 ** 5).toLocaleString('fullwide', {useGrouping:false});
+      ebInput.value = (bitValue / 8 / 1024 ** 6).toLocaleString('fullwide', {useGrouping:false});
+      zbInput.value = (bitValue / 8 / 1024 ** 7).toLocaleString('fullwide', {useGrouping:false});
+    }
+
+    // Distance converter stub (can be implemented similarly if you want)
+    function convertDistance(from) {
+      // Implementation omitted for brevity, but similar to data converter
+    }
+
+  </script>
+</body>
+</html>
