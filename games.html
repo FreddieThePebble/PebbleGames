@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PebbleGames</title>
 
-  <!-- Load custom fonts -->
   <style>
     @font-face {
       font-family: 'Comfortaa';
@@ -124,34 +123,36 @@
 
     .popup-content {
       background: #222;
-      padding: 30px;
+      padding: 40px;
       border-radius: 12px;
-      max-width: 500px;
-      width: 90%;
-      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      max-width: 700px;
+      width: 95%;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
       animation: fadeIn 0.3s ease-out;
     }
 
     .popup-text {
-      font-size: 16px;
+      font-size: 18px;
       line-height: 1.6;
       margin-bottom: 20px;
       font-family: 'Comfortaa', sans-serif;
+      color: #fff;
     }
 
     .popup-text a {
       color: #0ea0f4;
       text-decoration: underline;
       display: block;
-      margin: 4px 0;
+      margin: 6px 0;
     }
 
     .close {
-      font-size: 0.9em;
+      font-size: 1em;
       color: #aaa;
       cursor: pointer;
       transition: color 0.2s ease;
       font-family: 'Comfortaa', sans-serif;
+      text-align: right;
     }
 
     .close:hover {
@@ -164,17 +165,72 @@
     }
     
     .random-icon {
-  width: 28px;
-  height: 28px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      transform: scaleX(-1);
+      transition: filter 0.2s ease;
+    }
+
+    .random-icon:hover {
+      filter: brightness(1.3);
+    }
+
+.popup-inner {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+  color: white;
+}
+
+.popup-left {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.popup-text {
+  font-size: 18px;
+  line-height: 1.6;
+  font-family: 'Comfortaa', sans-serif;
+  color: #fff;
+}
+
+.close {
+  font-size: 1em;
+  color: #aaa;
   cursor: pointer;
-  transform: scaleX(-1);
-  transition: filter 0.2s ease;
+  transition: color 0.2s ease;
+  font-family: 'Comfortaa', sans-serif;
+  text-align: left;
+  user-select: none;
 }
 
-.random-icon:hover {
-  filter: brightness(1.3);
+.close:hover {
+  color: #fff;
 }
 
+.popup-right {
+  flex-shrink: 0;
+}
+
+#popup-thumb {
+  width: 260px;
+  height: 146px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #444;
+}
+
+@media (max-width: 768px) {
+  .popup-right {
+    display: none;
+  }
+}
   </style>
 </head>
 <body>
@@ -182,13 +238,12 @@
   <div class="top-bar">
     <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/ui/home.png" class="home-icon" alt="Home" title="Home" />
     <div class="buttons">
-  <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/ui/random.png" 
-       class="random-icon" 
-       alt="Randomize" 
-       title="Randomize" 
-       onclick="randomize()" />
-</div>
-
+      <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/ui/random.png" 
+           class="random-icon" 
+           alt="Randomize" 
+           title="Randomize" 
+           onclick="randomize()" />
+    </div>
   </div>
 
   <header>
@@ -196,15 +251,23 @@
     <p class="tagline">I make games.</p>
   </header>
 
-  <div class="count" id="count">Loading games...</div>
+  <div class="count" id="count">Loading...</div>
   <div class="grid" id="grid"></div>
 
-  <div class="popup" id="popup">
-    <div class="popup-content">
-      <div class="popup-text" id="popup-text">Play</div>
-      <div class="close" onclick="hidePopup()">Close</div>
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <div class="popup-inner">
+      <div class="popup-left">
+        <div class="popup-text" id="popup-text"></div>
+        <div class="close" onclick="hidePopup()">Close</div>
+      </div>
+      <div class="popup-right">
+        <img id="popup-thumb" src="" alt="Game Thumbnail" />
+      </div>
     </div>
   </div>
+</div>
+
 
   <script>
     const grid = document.getElementById('grid');
@@ -213,12 +276,17 @@
     const countDisplay = document.getElementById('count');
     let games = [];
 
-    function showPopup(info) {
-      let content = "<strong>Links:</strong><br>";
+    function showPopup(info, thumb) {
+      let linksContent = "<strong>Links:</strong><br>";
       for (const key in info) {
-        content += `<a href="${info[key]}" target="_blank">${key}</a>`;
+        linksContent += `<a href="${info[key]}" target="_blank">${key}</a>`;
       }
-      popupText.innerHTML = content;
+      popupText.innerHTML = linksContent;
+
+      const popupThumb = document.getElementById('popup-thumb');
+      popupThumb.src = thumb;
+      popupThumb.alt = "Thumbnail for " + (Object.keys(info)[0] || "game");
+
       popup.style.display = 'flex';
     }
 
@@ -235,7 +303,7 @@
       data.forEach(entry => {
         const card = document.createElement('div');
         card.className = 'card';
-        card.onclick = () => showPopup(entry.info);
+        card.onclick = () => showPopup(entry.info, entry.thumb);
         card.innerHTML = `<img src="${entry.thumb}" alt="Thumbnail">`;
         grid.appendChild(card);
       });
