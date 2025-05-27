@@ -4,19 +4,231 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PebbleGames</title>
-  <link rel="stylesheet" href="grid.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      text-align: center;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: #1a1a1a;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+
+    header .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    header button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    header button:hover {
+      background: #555;
+    }
+
+    .home-icon {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+
+    .count {
+      margin: 10px 0;
+      font-size: 1rem;
+      color: #aaa;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid #333;
+      background: #1a1a1a;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-title {
+      padding: 8px;
+      font-size: 1rem;
+      color: #ccc;
+      background: #222;
+    }
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+    }
+
+    .popup-content {
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90%;
+      text-align: center;
+    }
+
+    .popup-text {
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .popup-text a {
+      color: #4ac8ff;
+      text-decoration: underline;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .close {
+      margin-top: 15px;
+      color: #aaa;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: white;
+    }
+  </style>
 </head>
 <body>
-  <a href="https://freddiethepebble.github.io/PebbleGames/" class="home-icon">
-    <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/home.png" alt="Home" />
-  </a>
 
-  <div class="game-count" id="gameCount">0</div>
+  <header>
+    <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/templates/Thubnail%20Placeholder.png" class="home-icon" alt="Home" title="Home" />
+    <h1>Games</h1>
+    <div class="buttons">
+      <button onclick="randomize()">Randomize</button>
+    </div>
+  </header>
 
-  <h1>Pebble Games</h1>
-  <div class="grid" id="gallery"></div>
+  <div class="count" id="count">Loading games...</div>
+  <div class="grid" id="grid"></div>
 
-  <script src="games.js"></script>
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <div class="popup-text" id="popup-text">Play</div>
+      <div class="close" onclick="hidePopup()">Close</div>
+    </div>
+  </div>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const popup = document.getElementById('popup');
+    const popupText = document.getElementById('popup-text');
+    const countDisplay = document.getElementById('count');
+    let games = [];
+
+    function showPopup(info) {
+      let content = "<strong>Links:</strong><br>";
+      for (const key in info) {
+        content += `<a href="${info[key]}" target="_blank">${key}</a>`;
+      }
+      popupText.innerHTML = content;
+      popup.style.display = 'flex';
+    }
+
+    function hidePopup() {
+      popup.style.display = 'none';
+    }
+
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) hidePopup();
+    });
+
+    function renderGames(data) {
+      grid.innerHTML = '';
+      data.forEach(entry => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.onclick = () => showPopup(entry.info);
+        card.innerHTML = `
+          <img src="${entry.thumb}" alt="Thumbnail">
+          <div class="card-title">${entry.title}</div>
+        `;
+        grid.appendChild(card);
+      });
+      countDisplay.textContent = `${data.length} game${data.length !== 1 ? 's' : ''} available`;
+    }
+
+    function randomize() {
+      const shuffled = [...games].sort(() => Math.random() - 0.5);
+      renderGames(shuffled);
+    }
+
+    fetch('https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/data/games.txt')
+      .then(response => response.text())
+      .then(text => {
+        const lines = text.trim().split('\n');
+        games = [];
+
+        for (let i = 0; i < lines.length - 1; i += 2) {
+          const thumbUrl = lines[i].trim();
+          let jsonLine = lines[i + 1].trim();
+
+          try {
+            const info = JSON.parse(jsonLine);
+            const firstKey = Object.keys(info)[0] || "Untitled";
+            games.push({ thumb: thumbUrl, title: firstKey, info });
+          } catch (e) {
+            console.error('Failed to parse JSON:', jsonLine, e);
+          }
+        }
+
+        renderGames(games);
+      })
+      .catch(err => {
+        console.error('Failed to fetch TXT:', err);
+        grid.innerHTML = '<p style="color: red;">Could not load game data.</p>';
+        countDisplay.textContent = '';
+      });
+  </script>
 
 </body>
 </html>
