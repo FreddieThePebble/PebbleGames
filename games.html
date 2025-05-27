@@ -4,10 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PebbleGames</title>
+
+  <!-- Load Comfortaa font -->
   <style>
+    @font-face {
+      font-family: 'Comfortaa';
+      src: url('https://github.com/FreddieThePebble/PebbleGames/raw/refs/heads/PebbleGames/fonts/Comfortaa.ttf') format('truetype');
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Comfortaa', sans-serif;
       background: #111;
       color: white;
       text-align: center;
@@ -39,6 +46,7 @@
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s;
+      font-family: 'Comfortaa', sans-serif;
     }
 
     header button:hover {
@@ -84,13 +92,6 @@
       aspect-ratio: 16/9;
       object-fit: cover;
       display: block;
-    }
-
-    .card-title {
-      padding: 8px;
-      font-size: 1rem;
-      color: #ccc;
-      background: #222;
     }
 
     .popup {
@@ -141,7 +142,7 @@
 <body>
 
   <header>
-    <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/templates/Thubnail%20Placeholder.png" class="home-icon" alt="Home" title="Home" />
+    <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/ui/home.png" class="home-icon" alt="Home" title="Home" />
     <h1>Games</h1>
     <div class="buttons">
       <button onclick="randomize()">Randomize</button>
@@ -188,13 +189,10 @@
         const card = document.createElement('div');
         card.className = 'card';
         card.onclick = () => showPopup(entry.info);
-        card.innerHTML = `
-          <img src="${entry.thumb}" alt="Thumbnail">
-          <div class="card-title">${entry.title}</div>
-        `;
+        card.innerHTML = `<img src="${entry.thumb}" alt="Thumbnail">`;
         grid.appendChild(card);
       });
-      countDisplay.textContent = `${data.length} game${data.length !== 1 ? 's' : ''} available`;
+      countDisplay.textContent = `${data.length} game${data.length !== 1 ? 's' : ''}`;
     }
 
     function randomize() {
