@@ -2,103 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PebbleGames</title>
-  <link id="favicon" rel="icon" type="image/x-icon" href="https://github.com/FreddieThePebble/PebbleGames/raw/refs/heads/main/icons/favicons/main.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Comfortaa:wght@300;400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="index.css">
-</head>
-
-<body>
-  <div class="container">
-    <h1>Crap no one cares about</h1>
-    
-    <div class="divider"></div>
-
-    <div class="footer">
-      <h3>This website was created by FreddieThePebble, Contact FreddieThePebble:</h3>
-      <p>Email: <a href="mailto:contact4mysanity@gmail.com">contact4mysanity@gmail.com</a></p>
-      <p>Message me on <a href="https://www.reddit.com/message/compose/?to=FreddieThePebble">Reddit</a></p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="issue-tracker">
-      <p>If you find a bug/error in one of my games or want to make a suggestion, plz submit it to the <a href="https://github.com/FreddieThePebble/PebbleGames/issues" target="_blank">PebbleGames Issue Tracker</a></p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="insperations">
-      <p>Inspired by: <a href="https://neal.fun/" target="_blank">Neal.fun</a></p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="insperations">
-      <p>Main FreddieThePebbleSite: <a href="https://freddiethepebble.github.io/-/" target="_blank">Pebble Website</a></p>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="share-section">
-      <p>Share this website:</p>
-      <a class="share-link" onclick="copyToClipboard()">freddiethepebble.github.io/PebbleGames</a>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="social-icons">
-      <p>Community:</p>
-      <a class="social-icon" href="https://www.reddit.com/r/FreddieThePebble/" target="_blank">
-        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/social/Reddit.png" alt="Reddit" />
-      </a>
-      <a class="social-icon" href="https://discord.gg/h5BQmAFKNc" target="_blank">
-        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/social/Discord.png" alt="Discord" />
-      </a>
-      <a class="social-icon" href="https://www.tumblr.com/join/SQuW6-hQ" target="_blank">
-        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/social/tumblr.png" alt="Tumblr" />
-      </a>
-      <a class="social-icon" href="https://gamejolt.com/c/pebble-netx2t" target="_blank">
-        <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/platforms/GameJolt.png" alt="GameJolt" />
-      </a>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="social-icons">
-        <p>Donate:</p>
-        <a class="social-icon" href="https://buymeacoffee.com/freddiethepebble" target="_blank">
-          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/donate/BuyMeCoffee.png" alt="BuyMeACoffe" />
-        </a>
-        <a class="social-icon" href="https://www.paypal.com/donate/?hosted_button_id=XX5U9H8HCN6B4" target="_blank">
-          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/main/icons/ui/donate/Paypal.png" alt="PayPal" />
-        </a>
-      <a class="social-icon" href="https://www.paypal.com/donate/?hosted_button_id=XX5U9H8HCN6B4" target="_blank">
-          <img src="https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/ui/donate/Ko-Fi.png" alt="Ko-Fi" />
-        </a>
-      </div>
-  </div>
-
-  <script>
-    window.onload = function () {
-    const favicon = document.getElementById("favicon");
-    const today = new Date();
-    const day = today.getDate();
-    const month = today.getMonth() + 1;
-
-    if (month === 12 && day <= 25) {
-      favicon.href = "https://github.com/FreddieThePebble/PebbleGames/raw/refs/heads/main/icons/favicons/christmas.ico";
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #121212;
+      color: #eeeeee;
+      line-height: 1.6;
+      padding: 2rem;
     }
-  };
 
-  function copyToClipboard() {
-    const link = "https://freddiethepebble.github.io/PebbleGames";
-    navigator.clipboard.writeText(link).then(() => {
-      alert("Link copied to clipboard!");
-    });
-  }"
-  </script>
+    a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 2rem auto;
+      background-color: #1e1e1e;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    }
+
+    .footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      text-align: center;
+      color: #888;
+    }
+
+    .footer a {
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="section">
+    <h1>PebbleGames - Infomation</h1>
+    <p><a href="https://freddiethepebble.github.io/PebbleGames/" target="_blank">Go to homepage</a></p>
+    <p>Crap no one cares about:</p>
+    <p>This website was created by <strong>FreddieThePebble</strong>.</p>
+    <p>Contact FreddieThePebble: <a href="mailto:contact4mysanity@gmail.com">contact4mysanity@gmail.com</a></p>
+    <p>If you find a bug/error in one of my games or want to make a suggestion, plz submit it to the <a href="https://github.com/FreddieThePebble/PebbleGames/issues" target="_blank">PebbleGames Issue Tracker</a>.</p>
+    <p>Inspired by: <a href="https://neal.fun/" target="_blank">neal.fun</a>.</p>
+    <p>Main FreddieThePebble site: <a href="https://freddiethepebble.github.io/-/" target="_blank">Pebble Website</a></p>
+  </div>
 
 </body>
 </html>
