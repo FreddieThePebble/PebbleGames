@@ -4,4 +4,9 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/travellog/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/dickflags.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/dickflags/"}
-
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/fps.png
+{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/FPS/"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/burnt-toast.png
+{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/burnt-toast/"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/bored2dos.png
+{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/bored2dos/"}
