@@ -1,8 +1,2 @@
-https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/templates/Thubnail%20Placeholder.png
-{"Test 1":"https://www.youtube.com/"}
-https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/templates/Thubnail%20Placeholder.png
-{"Test 2a": "https://www.youtube.com/", "Test 2b": "https://www.youtube.com/"}
-https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/templates/Thubnail%20Placeholder.png
-{"Test 3":"https://www.youtube.com/"}
-https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/templates/Thubnail%20Placeholder.png
-{"Test 4":"https://www.youtube.com/"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/wayback.png
+{"GameJolt":"https://gamejolt.com/games/Wayback/995493", "itch.io":"https://freddiethepebble.itch.io/wayback"}
