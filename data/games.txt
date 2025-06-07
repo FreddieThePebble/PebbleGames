@@ -20,3 +20,7 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 {"itch.io":"https://freddiethepebble.itch.io/e"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/burnt-toast.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/burnt-toast/"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/garlic-dalek.png
+{"itch.io":"https://freddiethepebble.itch.io/garlic-dalek"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/floatingmiddlefinger.png
+{"itch.io":"https://freddiethepebble.itch.io/floatingmiddlefinger"}
