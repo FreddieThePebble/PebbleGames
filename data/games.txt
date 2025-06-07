@@ -10,3 +10,5 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/burnt-toast/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/bored2dos.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/bored2dos/"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/flip.png
+{"Flip - itch.io":"https://freddiethepebble.itch.io/line", "Flip 2 - itch.io":"https://freddiethepebble.itch.io/flip"}
