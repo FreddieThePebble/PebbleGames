@@ -2,4 +2,6 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 {"GameJolt":"https://gamejolt.com/games/Wayback/995493", "itch.io":"https://freddiethepebble.itch.io/wayback"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/travellog.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/travellog/"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/dickflags.png
+{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/dickflags/"}
 
