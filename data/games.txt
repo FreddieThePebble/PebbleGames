@@ -5,7 +5,7 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/travellog.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/travellog/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/digitsofpi.png
-{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/digitsofpi/"}
+{"GitHub (Legacy)":"https://freddiethepebble.github.io/PebbleGames/githubgames/digitsofpi/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/fps.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/FPS/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/typeseedtest.png
