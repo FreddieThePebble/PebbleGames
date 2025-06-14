@@ -30,3 +30,5 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 {"itch.io":"https://freddiethepebble.itch.io/stupidquiz"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/knock-off-flappy-bird.png
 {"itch.io":"https://freddiethepebble.itch.io/knock-off-flappy-bird"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/nameflag.png
+{"itch.io":"https://freddiethepebble.itch.io/nameflag"}
