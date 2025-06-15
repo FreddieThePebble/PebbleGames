@@ -12,6 +12,8 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/FPS/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/typeseedtest.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/typeseedtest/"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/ways2sayname.png
+{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/ways2sayname/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/bored2dos.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/bored2dos/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/red.png
