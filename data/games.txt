@@ -6,6 +6,8 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/travellog/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/digitsofpi.png
 {"GitHub (Legacy)":"https://freddiethepebble.github.io/PebbleGames/githubgames/digitsofpi/", "GameJolt":"https://gamejolt.com/games/digitsofpi-remastered/998073"}
+https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/howoldareu.png
+{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/howoldareu/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/fps.png
 {"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/FPS/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/typeseedtest.png
