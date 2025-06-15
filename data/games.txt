@@ -1,41 +1,41 @@
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/wayback.png
 {"Wayback - GameJolt":"https://gamejolt.com/games/Wayback/995493", "Wayback - itch.io":"https://freddiethepebble.itch.io/wayback"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/dickflags.png
-{"Flags with Dicks - GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/dickflags/"}
+{"Flags with Dicks":"https://freddiethepebble.github.io/PebbleGames/githubgames/dickflags/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/travellog.png
-{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/travellog/"}
+{"Travel Log":"https://freddiethepebble.github.io/PebbleGames/githubgames/travellog/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/digitsofpi.png
-{"GitHub (Legacy)":"https://freddiethepebble.github.io/PebbleGames/githubgames/digitsofpi/", "GameJolt":"https://gamejolt.com/games/digitsofpi-remastered/998073"}
+{"Digits Of Pi (Legacy)":"https://freddiethepebble.github.io/PebbleGames/githubgames/digitsofpi/", "GameJolt":"https://gamejolt.com/games/digitsofpi-remastered/998073"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/howoldareu.png
-{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/howoldareu/"}
+{"How old are U?":"https://freddiethepebble.github.io/PebbleGames/githubgames/howoldareu/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/fps.png
-{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/FPS/"}
+{"FPS":"https://freddiethepebble.github.io/PebbleGames/githubgames/FPS/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/typeseedtest.png
-{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/typeseedtest/"}
+{"Type Speed Test":"https://freddiethepebble.github.io/PebbleGames/githubgames/typeseedtest/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/ways2sayname.png
-{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/ways2sayname/"}
+{"Ways 2 say your name":"https://freddiethepebble.github.io/PebbleGames/githubgames/ways2sayname/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/bored2dos.png
-{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/bored2dos/"}
+{"Things 2do when bored":"https://freddiethepebble.github.io/PebbleGames/githubgames/bored2dos/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/red.png
-{"itch.io":"https://freddiethepebble.itch.io/touched"}
+{"RED - itch.io":"https://freddiethepebble.itch.io/touched"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/tacodoge.png
-{"itch.io":"https://freddiethepebble.itch.io/tacodoge"}
+{"Taco Doger - itch.io":"https://freddiethepebble.itch.io/tacodoge"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/flip.png
 {"Flip - itch.io":"https://freddiethepebble.itch.io/line", "Flip 2 - itch.io":"https://freddiethepebble.itch.io/flip"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/e.png
-{"itch.io":"https://freddiethepebble.itch.io/e"}
+{"E - itch.io":"https://freddiethepebble.itch.io/e"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/burnt-toast.png
-{"GitHub":"https://freddiethepebble.github.io/PebbleGames/githubgames/burnt-toast/"}
+{"Burnt Toast":"https://freddiethepebble.github.io/PebbleGames/githubgames/burnt-toast/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/garlic-dalek.png
-{"itch.io":"https://freddiethepebble.itch.io/garlic-dalek"}
+{"Garlic or Dalek - itch.io":"https://freddiethepebble.itch.io/garlic-dalek"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/floatingmiddlefinger.png
-{"itch.io":"https://freddiethepebble.itch.io/floatingmiddlefinger"}
+{"Floating Middle Finger - icth.io":"https://freddiethepebble.itch.io/floatingmiddlefinger"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/rock-dating.png
-{"itch.io":"https://freddiethepebble.itch.io/rock-dating"}
+{"Igneous Rock Dating Sim - itch.io":"https://freddiethepebble.itch.io/rock-dating"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/stupidquiz.png
-{"itch.io":"https://freddiethepebble.itch.io/stupidquiz"}
+{"The Stupid Quiz - itch.io":"https://freddiethepebble.itch.io/stupidquiz"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/knock-off-flappy-bird.png
-{"itch.io":"https://freddiethepebble.itch.io/knock-off-flappy-bird"}
+{"Knock Off Flappy Bird - itch.io":"https://freddiethepebble.itch.io/knock-off-flappy-bird"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/nameflag.png
-{"itch.io":"https://freddiethepebble.itch.io/nameflag"}
+{"Name dat Flag - itch.io":"https://freddiethepebble.itch.io/nameflag"}
 
