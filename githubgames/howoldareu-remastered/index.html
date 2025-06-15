@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How Old Are You?</title>
+  <link rel="stylesheet" href="styles.css" />
+
+</head>
+<body>
+  <h1>What is your date and time of birth?</h1>
+
+  <p>I created this as a age calucltor but it calculates holw old you are exactly. it even calculates how old you are in secconds.
+    Note: idk how accurate thisis but it looks about right
+    The og concept was just how olad re you in exactly but ive updated the game to contain cool features such as how many times youve blicked and pooped.
+    
+    Also of this are just estimations. not 100% accurate.
+  </p>
+  
+  <form id="birthForm">
+    <label>
+      Year:
+      <input type="number" id="year" min="1900" max="2100" required>
+    </label>
+    <label>
+      Month:
+      <select id="month" required>
+        <option value="01">January</option>
+        <option value="02">February</option>
+        <option value="03">March</option>
+        <option value="04">April</option>
+        <option value="05">May</option>
+        <option value="06">June</option>
+        <option value="07">July</option>
+        <option value="08">August</option>
+        <option value="09">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+      </select>
+    </label>
+    <label>
+      Day:
+      <input type="number" id="day" min="1" max="31" required>
+    </label>
+    <label>
+      Time (HH:MM, 24h format):
+      <input type="time" id="time" required>
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    // Cookie helper functions
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days*24*60*60*1000));
+      const expires = "expires="+ d.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    }
+
+    function getCookie(name) {
+      const cname = name + "=";
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const ca = decodedCookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1);
+        if (c.indexOf(cname) === 0) return c.substring(cname.length, c.length);
+      }
+      return "";
+    }
+
+    // Load saved or default values
+    window.addEventListener('DOMContentLoaded', () => {
+      const saved = getCookie('birthDateTime');
+
+      if(saved) {
+        // Parse saved cookie: "YYYY-MM-DDTHH:MM"
+        try {
+          const dt = new Date(saved);
+          if (!isNaN(dt)) {
+            document.getElementById('year').value = dt.getFullYear();
+            // Months are zero-indexed in JS Date
+            const month = (dt.getMonth() + 1).toString().padStart(2,'0');
+            document.getElementById('month').value = month;
+            document.getElementById('day').value = dt.getDate();
+            document.getElementById('time').value = dt.toTimeString().substring(0,5);
+            return;
+          }
+        } catch {}
+      }
+
+      // If no cookie or invalid, set default 6 Feb 2009 20:30
+      document.getElementById('year').value = 2009;
+      document.getElementById('month').value = "02";
+      document.getElementById('day').value = 6;
+      document.getElementById('time').value = "20:30";
+    });
+
+    // On form submit, open new window and save cookie
+    document.getElementById('birthForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const year = document.getElementById('year').value;
+      const month = document.getElementById('month').value;
+      const day = document.getElementById('day').value.padStart(2, '0');
+      const time = document.getElementById('time').value;
+
+      // Save cookie as ISO datetime string for easy parsing
+      const isoString = `${year}-${month}-${day}T${time}`;
+      setCookie('birthDateTime', isoString, 365);
+
+      const dateString = `${day}-${month}-${year}`;
+      const url = `response.html?date=${dateString}&time=${time}`;
+
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html>
