@@ -1,0 +1,97 @@
+/* common.css */
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 2em;
+  background: #121212;
+  color: #eee;
+  line-height: 1.5;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+  color: #ba0aed; /* purple accent */
+  text-align: center;
+}
+
+p, label {
+  font-size: 1.1em;
+  margin-top: 1em;
+}
+
+/* Form elements */
+input, select {
+  padding: 0.5em;
+  width: 200px;
+  background: #222;
+  border: 1px solid #444;
+  color: #eee;
+  border-radius: 4px;
+  font-size: 1em;
+  display: block;
+  margin-top: 0.3em;
+  box-sizing: border-box;
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+button {
+  margin-top: 2em;
+  padding: 0.5em 1em;
+  font-size: 1.1em;
+  background: #333;
+  border: none;
+  color: #eee;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: block;
+  width: 220px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button:hover {
+  background: #555;
+}
+
+/* Align labels and inputs for forms */
+label {
+  display: block;
+  margin-top: 1em;
+}
+
+/* Paragraph spacing for second HTML file */
+p {
+  margin-bottom: 1em;
+}
+
+/* Scrollbar styling for dark theme (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #444;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  body {
+    padding: 1em;
+  }
+  input, select, button {
+    width: 100%;
+  }
+}
