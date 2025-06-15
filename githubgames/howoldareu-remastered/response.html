@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Old You Are</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+    <p id="info"></p>
+    <p id="ageDetails"></p>
+    <p id="nextBirthdayDetails"></p>
+    <p id="heartRateDetails"></p>
+    <p id="breathingDetails"></p>
+    <p id="blinkingDetails"></p>
+    <p id="sleepDetails"></p>
+    <p id="earthTravelDetails"></p>
+    <p id="minecraftDetails"></p>
+    <p id="wordsSpokenDetails"></p>
+    <p id="bodilyFunctionsDetails"></p>
+    <p id="searchHistoryNote"></p>
+    <p id="lifeStagesDetails"></p>
+
+    <script>
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const date = getUrlParameter('date');  // Format: MM-DD-YYYY
+        const time = getUrlParameter('time');  // Format: HH:MM
+
+        if (!date || !time) {
+            window.location.href = "https://freddiethepebble.github.io/PebbleGames/githubgames/howoldareu-remastered/";
+        }
+
+        const birthDateTime = `${date} ${time}`;
+
+        document.getElementById('info').innerHTML = `You were born on ${birthDateTime} which means…`;
+
+        const birthDate = new Date(birthDateTime);
+
+        function updateCalculations() {
+            const now = new Date();
+
+            const ageInMilliseconds = now - birthDate;
+
+            function convertMilliseconds(ms) {
+                const seconds = ms / 1000;
+                const minutes = seconds / 60;
+                const hours = minutes / 60;
+                const days = hours / 24;
+                const weeks = days / 7;
+                const fortnights = weeks / 2;
+                const months = days / 30.44;
+                const years = days / 365.25;
+                const centuries = years / 100;
+                const millennia = centuries / 10;
+
+                return {
+                    millennia: millennia.toFixed(4),
+                    centuries: centuries.toFixed(3),
+                    decades: (years / 10).toFixed(3),
+                    years: years.toFixed(3),
+                    months: months.toFixed(3),
+                    fortnights: fortnights.toFixed(3),
+                    weeks: weeks.toFixed(3),
+                    days: days.toFixed(3),
+                    hours: hours.toFixed(3),
+                    minutes: minutes.toFixed(3),
+                    seconds: seconds.toFixed(3),
+                    milliseconds: ms.toFixed(3)
+                };
+            }
+
+            const age = convertMilliseconds(ageInMilliseconds);
+
+            document.getElementById('ageDetails').innerHTML = `
+                You are:<br>
+                ${age.millennia} Millennia old,<br>
+                ${age.centuries} Centuries old,<br>
+                ${age.decades} Decades old,<br>
+                ${age.years} Years old,<br>
+                ${age.months} Months old,<br>
+                ${age.fortnights} Fortnights old,<br>
+                ${age.weeks} Weeks old,<br>
+                ${age.days} Days old,<br>
+                ${age.hours} Hours old,<br>
+                ${age.minutes} Minutes old,<br>
+                ${age.seconds} Seconds old,<br>
+                ${age.milliseconds} Milliseconds old.
+            `;
+
+            let nextBirthday = new Date(birthDate);
+            nextBirthday.setFullYear(now.getFullYear());
+
+            if (now > nextBirthday) {
+                nextBirthday.setFullYear(now.getFullYear() + 1);
+            }
+
+            const timeUntilNextBirthday = nextBirthday - now;
+
+            const timeRemaining = convertMilliseconds(timeUntilNextBirthday);
+
+            document.getElementById('nextBirthdayDetails').innerHTML = `
+                There are:<br>
+                ${timeRemaining.years} Years until your next birthday,<br>
+                ${timeRemaining.months} Months until your next birthday,<br>
+                ${timeRemaining.fortnights} Fortnights until your next birthday,<br>
+                ${timeRemaining.weeks} Weeks until your next birthday,<br>
+                ${timeRemaining.days} Days until your next birthday,<br>
+                ${timeRemaining.hours} Hours until your next birthday,<br>
+                ${timeRemaining.minutes} Minutes until your next birthday,<br>
+                ${timeRemaining.seconds} Seconds until your next birthday,<br>
+                ${timeRemaining.milliseconds} Milliseconds until your next birthday.
+            `;
+
+            const heartRate = 80;
+            const heartbeats = (heartRate / 60) * ageInMilliseconds / 1000;
+
+            const breathingRate = 1 / 5;
+            const breaths = breathingRate * ageInMilliseconds / 1000;
+
+            const blinkingRate = 20000;
+            const daysAlive = age.days;
+            const blinks = blinkingRate * daysAlive;
+
+            document.getElementById('heartRateDetails').innerHTML = `
+                The average heart rate is 80 bpm so your heart has beat ${heartbeats.toFixed(0)} times.
+            `;
+            document.getElementById('breathingDetails').innerHTML = `
+                The average human breathes every 5 seconds so you have breathed ${breaths.toFixed(0)} times.
+            `;
+            document.getElementById('blinkingDetails').innerHTML = `
+                The average person blinks 20k times per day so you have blinked ${blinks.toFixed(0)} times.
+            `;
+
+            const sleepPercentage = 0.30;
+            const sleepMilliseconds = ageInMilliseconds * sleepPercentage;
+            const sleep = convertMilliseconds(sleepMilliseconds);
+
+            document.getElementById('sleepDetails').innerHTML = `
+                The average human spends 30% of their life sleeping so you have spent:<br>
+                ${sleep.years} Years asleep,<br>
+                ${sleep.months} Months asleep,<br>
+                ${sleep.fortnights} Fortnights asleep,<br>
+                ${sleep.weeks} Weeks asleep,<br>
+                ${sleep.days} Days asleep,<br>
+                ${sleep.hours} Hours asleep,<br>
+                ${sleep.minutes} Minutes asleep.
+            `;
+
+            const earthSpeed = 67000;
+            const earthTravelMiles = (earthSpeed * ageInMilliseconds) / (1000 * 60 * 60);
+
+            document.getElementById('earthTravelDetails').innerHTML = `
+                The earth travels around the sun at approximately 67,000mph so in your lifetime, the earth has traveled ${earthTravelMiles.toFixed(0)} miles.
+            `;
+
+            const minecraftDayLength = 20;
+            const minecraftDays = (ageInMilliseconds / (1000 * 60 * minecraftDayLength));
+
+            document.getElementById('minecraftDetails').innerHTML = `
+                One day in Minecraft is 20 minutes so you have lived ${minecraftDays.toFixed(0)} days in Minecraft.
+            `;
+
+            const wordsPerDay = 10000;
+            const wordsSpoken = wordsPerDay * daysAlive;
+
+            document.getElementById('wordsSpokenDetails').innerHTML = `
+                The average person says 10,000 words per day so you have spoken ${wordsSpoken.toFixed(0)} words in your life.
+            `;
+
+            const poopsPerWeek = 5;
+            const fartsPerDay = 14;
+            const weesPerDay = 6;
+
+            const poopedTimes = poopsPerWeek * (daysAlive / 7);
+            const fartedTimes = fartsPerDay * daysAlive;
+            const weedTimes = weesPerDay * daysAlive;
+
+            document.getElementById('bodilyFunctionsDetails').innerHTML = `
+                Assuming you're a regular human, you have bodily functions.<br>
+                The average person farts 14 times a day, poos 5 times a week, and pisses 6 times every day. So you have:<br>
+                Pooped ${poopedTimes.toFixed(0)} times,<br>
+                Farted ${fartedTimes.toFixed(0)} times,<br>
+                Wee-wee’d ${weedTimes.toFixed(0)} times in your lifetime.
+            `;
+
+            // Move this above life stages
+            document.getElementById('searchHistoryNote').innerHTML = `I am ashamed that “How often do people poop, pee and fart” is in my search history.`;
+
+            const stages = [
+                { name: "Baby", ageMin: 0, ageMax: 1 },
+                { name: "Toddler", ageMin: 3, ageMax: 4 },
+                { name: "Child", ageMin: 5, ageMax: 12 },
+                { name: "Teenager", ageMin: 13, ageMax: 19 },
+                { name: "Adult", ageMin: 20, ageMax: 80 },
+                { name: "Elder", ageMin: 81, ageMax: Infinity }
+            ];
+
+            let lifeStageDetails = "";
+
+            stages.forEach(stage => {
+                const lifeStageDuration = stage.ageMax - stage.ageMin;
+                const lifeStagePercentage = (lifeStageDuration / age.years) * 100;
+                lifeStageDetails += `So ${lifeStagePercentage.toFixed(2)}% of your life, you were a ${stage.name}.<br>`;
+            });
+
+            document.getElementById('lifeStagesDetails').innerHTML = lifeStageDetails;
+        }
+
+        setInterval(updateCalculations, 20);
+    </script>
+</body>
+</html>
