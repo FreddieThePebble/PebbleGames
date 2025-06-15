@@ -5,7 +5,7 @@ https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/Pebble
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/travellog.png
 {"Travel Log":"https://freddiethepebble.github.io/PebbleGames/githubgames/travellog/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/digitsofpi.png
-{"Digits Of Pi (Legacy)":"https://freddiethepebble.github.io/PebbleGames/githubgames/digitsofpi/", "GameJolt":"https://gamejolt.com/games/digitsofpi-remastered/998073"}
+{"Digits Of Pi (Legacy)":"https://freddiethepebble.github.io/PebbleGames/githubgames/digitsofpi/", "Digits Of Pi (Remastered) - GameJolt":"https://gamejolt.com/games/digitsofpi-remastered/998073"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/howoldareu.png
 {"How old are U?":"https://freddiethepebble.github.io/PebbleGames/githubgames/howoldareu/"}
 https://raw.githubusercontent.com/FreddieThePebble/PebbleGames/refs/heads/PebbleGames/icons/games/thumbnail/fps.png
